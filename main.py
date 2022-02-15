@@ -8,7 +8,7 @@ menuFlag = False
 
 
 # Global Arrays
-MovieDataRaw = []
+movieDataRaw = []
 
 
 # Functions
@@ -20,8 +20,8 @@ def loadFile():
         spamreader = csv.reader(movieFile, delimiter= ',')
         for row in spamreader:
             # do something with data here
-            movieRow = ', '.join(row)
-            MovieDataRaw.append(movieRow) # Adds Movie Data from file into the Array named 'MovieDataRaw'
+#            movieRow = ', '.join(row)
+            movieDataRaw.append(row) # Adds Movie Data from file into the Array named 'MovieDataRaw'
 #            print("Loaded Row ", rowCounter) # shows each line being red (for test purposes)
             rowCounter = rowCounter + 1
     print("[FILE] Successfully Loaded all File Contents! (",rowCounter, " Entries )")
@@ -52,10 +52,6 @@ while(menuFlag== False):
     if(userOption == "1"):
         # Mackenzie Function
         print("Running Option 1")
-
-        # test 
-        print(MovieDataRaw[3])
-
         menuFlag = True
     elif(userOption == "2"):
         # Dylan Function
