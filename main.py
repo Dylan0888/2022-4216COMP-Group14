@@ -1,13 +1,40 @@
 # Imports
+import csv
+from array import *
+
 
 # Global Variables
 menuFlag = False
 
 
+# Global Arrays
+MovieDataRaw = []
+
+
+# Functions
+def loadFile():
+    print("[FILE] Loading all File Contents! Please Wait...")
+    rowCounter = 0
+
+    with open('movies_initial.csv', newline='') as movieFile:
+        spamreader = csv.reader(movieFile, delimiter= ',')
+        for row in spamreader:
+            # do something with data here
+            movieRow = ', '.join(row)
+            MovieDataRaw.append(movieRow) # Adds Movie Data from file into the Array named 'MovieDataRaw'
+#            print("Loaded Row ", rowCounter) # shows each line being red (for test purposes)
+            rowCounter = rowCounter + 1
+    print("[FILE] Successfully Loaded all File Contents! (",rowCounter, " Entries )")
+
+
+
+
 # Main Code
+
+loadFile() # Loads file when program is started
+
 while(menuFlag== False):
     print("""
-    \n\n
     -----------( Main Menu )-----------
     \t  -+- Menu Options: -+-
     \t 1. Graph 1 - Something
@@ -25,6 +52,10 @@ while(menuFlag== False):
     if(userOption == "1"):
         # Mackenzie Function
         print("Running Option 1")
+
+        # test 
+        print(MovieDataRaw[3])
+
         menuFlag = True
     elif(userOption == "2"):
         # Dylan Function
@@ -50,7 +81,5 @@ while(menuFlag== False):
         # Exit Function
         print("Exiting the Program...\n ")    
         menuFlag = True 
-    else:
+    else: 
         print("Invalid Input! Please Pick a Menu Option (1-6).") # Validation to ensure Number is between 1 and 7
-
-
