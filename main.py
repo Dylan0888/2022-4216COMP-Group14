@@ -42,7 +42,7 @@ while(menuFlag== False):
     -----------( Main Menu )-----------
     \t  -+- Menu Options: -+-
     \t 1. Graph 1 - Something
-    \t 2. Graph 2 - Something
+    \t 2. Graph 2 - Actors an Movies Per Year
     \t 3. Graph 3 - Something
     \t 4. Graph 4 - Something
     \t 5. Graph 5 - Something
