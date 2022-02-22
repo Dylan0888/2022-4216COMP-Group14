@@ -1,7 +1,7 @@
 # Imports
 import csv
 from array import *
-
+import pandas as pd
 
 # Global Variables
 menuFlag = False
@@ -26,12 +26,16 @@ def loadFile():
             rowCounter = rowCounter + 1
     print("[FILE] Successfully Loaded all File Contents! (",rowCounter, " Entries )")
 
-
+def newLoadFile():
+    print ("[file]")
+    data = pd.read_csv("movies_initial.csv")
+    C = data["imdbRating"]
+    print(C)
 
 
 # Main Code
 
-loadFile() # Loads file when program is started
+newLoadFile() # Loads file when program is started
 
 while(menuFlag== False):
     print("""
