@@ -5,3 +5,20 @@
 
 # option 1 shows data in function plots 
 # option 2 shows data in multi bar plot 
+
+userChoice = input("""
+    ------------------
+   
+    Would you like to analyse one actor and the movies they've been in per year or multiple?
+    
+    ------ Options ------
+    \t 1. Single Actor
+    \t 2. Multiple Actors 
+    """)
+
+if userChoice == "1":
+    print("111111")
+elif userChoice == "2":
+    print("22222")
+else:
+    print("Please select a valid input!")
