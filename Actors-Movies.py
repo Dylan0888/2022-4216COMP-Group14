@@ -6,24 +6,22 @@
 # option 1 shows data in function plots 
 # option 2 shows data in multi bar plot 
 
-from numpy import single
-
-
 singleChoice = False
 multiChoice = False 
 
 # Users choice will lead to a spacific graph being shown 
-userChoice = input("""
-    ------------------
+while (singleChoice != True or multiChoice != True):
+    userChoice = input("""
+        ------------------
    
-    Would you like to analyse one actor and the movies they've been in per year or multiple?
+        Would you like to analyse one actor and the movies they've been in per year or multiple?
     
-    ------ Options ------
+        ------ Options ------
     \t 1. Single Actor
     \t 2. Multiple Actors 
-    """)
+        
+        """)
 
-while (singleChoice != True or multiChoice != True):
     if userChoice == "1":
         singleChoice = True
         print(singleChoice)
@@ -33,8 +31,6 @@ while (singleChoice != True or multiChoice != True):
         multiChoice = True
     else:
         print("Please select a valid input!")
-
-
 
 
 if singleChoice == True:
