@@ -6,6 +6,13 @@
 # option 1 shows data in function plots 
 # option 2 shows data in multi bar plot 
 
+from numpy import single
+
+
+singleChoice = False
+multiChoice = False 
+
+# Users choice will lead to a spacific graph being shown 
 userChoice = input("""
     ------------------
    
@@ -16,9 +23,25 @@ userChoice = input("""
     \t 2. Multiple Actors 
     """)
 
-if userChoice == "1":
-    print("111111")
-elif userChoice == "2":
-    print("22222")
-else:
-    print("Please select a valid input!")
+while (singleChoice != True or multiChoice != True):
+    if userChoice == "1":
+        singleChoice = True
+        print(singleChoice)
+
+    elif userChoice == "2":
+        print("22222")
+        multiChoice = True
+    else:
+        print("Please select a valid input!")
+
+
+
+
+if singleChoice == True:
+        print("outputting single graph ")
+        #
+        #
+        #
+        #
+elif multiChoice == True:
+    print("running code for multiple actors")
