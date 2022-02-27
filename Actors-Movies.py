@@ -6,38 +6,42 @@
 # option 1 shows data in function plots 
 # option 2 shows data in multi bar plot 
 
-singleChoice = False
-multiChoice = False 
+userSelection = False
+
+def singGraph ():
+    print("Loading graph...")
+
+
+def multiGraph ():
+    print("Loading multiple graphs....")
+
 
 # Users choice will lead to a spacific graph being shown 
-while (singleChoice != True or multiChoice != True):
+while (userSelection != True):
     userChoice = input("""
-        ------------------
-   
-        Would you like to analyse one actor and the movies they've been in per year or multiple?
-    
+        Would you like to visulise a single actor and their roles or multiple actors?
+
         ------ Options ------
     \t 1. Single Actor
     \t 2. Multiple Actors 
-        
+        ---------------------
         """)
 
     if userChoice == "1":
-        singleChoice = True
-        print(singleChoice)
+        userSelection = True
+        singGraph()
+        
 
     elif userChoice == "2":
-        print("22222")
-        multiChoice = True
+        userSelection = True
+        multiGraph ()
+    
     else:
         print("Please select a valid input!")
 
 
-if singleChoice == True:
-        print("outputting single graph ")
-        #
-        #
-        #
-        #
-elif multiChoice == True:
-    print("running code for multiple actors")
+
+
+
+
+
