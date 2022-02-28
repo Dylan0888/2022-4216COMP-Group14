@@ -30,11 +30,28 @@ def loadFile():
     print("[FILE] Successfully Loaded all File Contents! (",rowCounter, " Entries )")
 
 def newLoadFile():
-    print ("[file]")
+    print ("[FILE] Loading Specific Category...")
     data = pd.read_csv("movies_initial.csv")
     C = data["imdbRating"]
     print(C)
 
+def loadCategory(chosenCategory):
+    # Input a category name, loads specified category into an array and returns it.
+    # If input category is not valid, -1 will be returned
+    validCat = False
+    # Array of categories from Excel Spreadsheet
+    availableCat = ["imdbID", "title", "year", "rating", "runtime", "genre", "released", "director", "writer", "cast", "metacritic", "imdbRating", "imdbVotes", "poster", "plot", "fullplot", "language", "country", "awards", "lastupdated", "type"]
+    for i in range (len(availableCat)):
+        if(chosenCategory == availableCat[i]):
+            validCat = True
+            break
+    if(validCat):
+        data = pd.read_csv("movies_initial.csv")
+        chosenCatArray = data[chosenCategory] # Uses input Category and reads from the file.
+        return chosenCatArray
+    else:
+        print("[ERROR] Specified Category is not a Valid Option!")
+        return -1
 
 # Main Code
 
@@ -59,7 +76,7 @@ while(menuFlag== False):
     if(userOption == "1"):
         # Mackenzie Function
         print("Running Option 1")
-        mc.createGraph(movieDataRaw)
+        mc.createGraph(loadCategory("title"), loadCategory("country"))
         menuFlag = True
     elif(userOption == "2"):
         # Dylan Function
