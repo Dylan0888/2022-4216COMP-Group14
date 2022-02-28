@@ -3,6 +3,9 @@ import csv
 from array import *
 import pandas as pd
 
+# Import files of Everyone 
+import moviesCountries as mc  # Mackenzie's File
+
 # Global Variables
 menuFlag = False
 
@@ -35,13 +38,13 @@ def newLoadFile():
 
 # Main Code
 
-newLoadFile() # Loads file when program is started
+loadFile() # Loads file when program is started
 
 while(menuFlag== False):
     print("""
     -----------( Main Menu )-----------
     \t  -+- Menu Options: -+-
-    \t 1. Graph 1 - Something
+    \t 1. Graph 1 - Movies Per Country
     \t 2. Graph 2 - Actors an Movies Per Year
     \t 3. Graph 3 - Something
     \t 4. Graph 4 - Something
@@ -56,6 +59,7 @@ while(menuFlag== False):
     if(userOption == "1"):
         # Mackenzie Function
         print("Running Option 1")
+        mc.createGraph(movieDataRaw)
         menuFlag = True
     elif(userOption == "2"):
         # Dylan Function
