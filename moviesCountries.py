@@ -23,6 +23,7 @@ Steps:
 
 # Functions
 
-def createGraph(movieData):
+def createGraph(movieTitle, country):
     print("[SUB-FILE] Successfully Passed Full Array into Sub File!")
-    print(movieData)
+    for i in range (len(movieTitle)):
+        print(i, ": ", movieTitle[i], " - ", country[i])
