@@ -6,6 +6,10 @@
 # option 1 shows data in function plots 
 # option 2 shows data in multi bar plot 
 
+# from main import loadFile 
+# loadfile ()
+
+
 userSelection = False
 
 def singGraph ():
