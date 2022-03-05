@@ -6,14 +6,26 @@
 # option 1 shows data in function plots 
 # option 2 shows data in multi bar plot 
 
+# Imports
+import numpy as np
+import matplotlib.pyplot as plt
 # from main import loadFile 
 # loadfile ()
 
-
+#cGlobal Vaiables 
 userSelection = False
 
+#Loads graph for single selected actor 
 def singGraph ():
     print("Loading graph...")
+
+    fig1, ax = plt.subplots()
+
+    ax.set_xlim(100, 400)
+    ax.set_ylim(1, 10)
+    ax.set_box_aspect(1)
+
+    plt.show()
 
 
 def multiGraph ():
@@ -34,6 +46,7 @@ while (userSelection != True):
     if userChoice == "1":
         userSelection = True
         singGraph()
+        
         
 
     elif userChoice == "2":
