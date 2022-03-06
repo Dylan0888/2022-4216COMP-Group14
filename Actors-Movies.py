@@ -7,6 +7,8 @@
 # option 2 shows data in multi bar plot 
 
 # Imports
+from re import X
+from tkinter import Y
 import numpy as np
 import matplotlib.pyplot as plt
 # from main import loadFile 
@@ -22,8 +24,11 @@ def singGraph ():
     fig1, ax = plt.subplots()
 
     ax.set_xlim(100, 400)
-    ax.set_ylim(1, 10)
+    ax.set_ylim(0, 10)
     ax.set_box_aspect(1)
+
+    ax.plot([100, 500], [1 , 9]) 
+    
 
     plt.show()
 
