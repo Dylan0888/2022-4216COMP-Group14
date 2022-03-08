@@ -102,7 +102,7 @@ def plotOnMap():
             [2] = y coord
             [3] = amount of films
         """
-        addPoint(float(splitArray[1]),float(splitArray[2]),"purple", sizeFormula(splitArray[3])) # plots the point on the graph (see addPoint function)
+        addPoint(float(splitArray[1]),float(splitArray[2]), colourFormula(int(splitArray[3])), sizeFormula(splitArray[3])) # plots the point on the graph (see addPoint function)
         print("[PLOT] Plotted Country data for ", splitArray[0], "!")
 
     print("[PLOT] Finished Plotting Data, Displaying Map...")
@@ -116,11 +116,22 @@ def addPoint(x, y, colour, size):
 
 def sizeFormula(amtMovies):
     # This is a Fomula used to calculate the Marker size for datapoints depending on the amount of movies from the country
-    print(amtMovies)
-    size= int(amtMovies)*float(0.008)
-    return int(size)
+    amt = int(amtMovies)
+    size = 1000 # default size so if an error occurs, it can be seen on the graph
+    if amt > 5000:
+        size= amt*float(0.005)
+    elif amt >= 1000:
+        size= amt*float(0.01)
+    elif amt >= 500:
+        size= amt*float(0.015)
+    elif amt < 500:
+        size= amt*float(0.02)
 
-def colourFormula(colour):
+    return int(size)
+    #return 0.008 #- the smallest size if we use the above formula
+    # idea: different colours have different size formulas
+
+def colourFormula(amt):
     """
      TODO add a formula to make dots different colours
      Purple - small
@@ -128,3 +139,14 @@ def colourFormula(colour):
      Blue - Large
      also make max dot size 100 or something
     """
+    chosenColour = "grey" #default colour shows if error is made
+    if amt >=5000:
+        chosenColour = "blue"
+    elif amt >=1000:
+        chosenColour = "purple"
+    elif amt >=500:
+        chosenColour = "red"
+    elif amt <500:
+        chosenColour = "orange"
+
+    return chosenColour
