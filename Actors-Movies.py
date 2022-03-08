@@ -7,30 +7,30 @@
 # option 2 shows data in multi bar plot 
 
 # Imports
-from re import X
-from tkinter import Y
-import numpy as np
 import matplotlib.pyplot as plt
-# from main import loadFile 
-# loadfile ()
+import numpy as np
 
-#cGlobal Vaiables 
+
+#Global Vaiables 
 userSelection = False
 
 #Loads graph for single selected actor 
 def singGraph ():
     print("Loading graph...")
 
-    fig1, ax = plt.subplots()
+    years = [1,2,3,4,5,6]
+    movieAppearances = [10,11,12,14,15,16]
 
-    ax.set_xlim(100, 400)
-    ax.set_ylim(0, 10)
-    ax.set_box_aspect(1)
+    fig, ax = plt.subplots()
+    ax.plot(years, movieAppearances, 'go--')
 
-    ax.plot([100, 500], [1 , 9]) 
-    
+    #-----Out of graph design-------#
+    ax.set_title("Annual actor appearances", fontsize=16)
+    ax.set_xlabel("Years", fontsize=12)
+    ax.set_ylabel("Amount of movies", fontsize=12)
 
     plt.show()
+
 
 
 def multiGraph ():
