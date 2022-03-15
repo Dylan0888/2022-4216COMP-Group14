@@ -83,7 +83,7 @@ while(menuFlag== False):
     elif(userOption == "2"):
         # Dylan Function
         print("Running Option 2")
-        #optionTwo.loadData(loadCategory("year"), loadCategory("cast"), loadCategory("imdbRating")
+        #optionTwo.loadData#(loadCategory("year"), loadCategory("cast"), loadCategory("imdbRating"))
         menuFlag = True
     elif(userOption == "3"):
         # Reece Function
