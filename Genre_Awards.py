@@ -1,3 +1,8 @@
+#imports
+import matplotlib.pyplot as plt
+import numpy as np
+plt.style.use('ggplot')
+
 #Genre menu options
 def genreMenu():
     print("-------( Select a genre )-----------")
@@ -31,6 +36,20 @@ option = int(input("Enter genre choice: "))
 while option != 0:
     if option == 1:
         #Action stuff goes here
+        
+        x = ['1990', '1991', '1992', '1993', '1993', '1994', '1995']
+        awards = 0, 1, 2, 3, 4, 5, 6
+
+        x_pos = [i for i, _ in enumerate(x)]
+
+        plt.bar(x_pos, awards, colour = 'green')
+        plt.xlabel("Year")
+        plt.ylabel("No. of Awards")
+        plt.title("No. of Awards for Action 1990-1995")
+        
+        plt.xticts(x_pos, x)
+        plt.show()
+
         print("Action Genre")
     elif option == 2:
         #Adventure stuff goes here
