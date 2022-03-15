@@ -6,8 +6,6 @@ import numpy as np
 #Global Vaiables 
 userSelection = False
 
-def loadData(year, imdbRating, cast):
-   print("yes") 
 
 #Loads graph for single selected actor 
 def singGraph():

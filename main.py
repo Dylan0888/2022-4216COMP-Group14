@@ -5,6 +5,7 @@ import pandas as pd
 
 # Import files of Everyone 
 import moviesCountries as mc  # Mackenzie's File
+#import Actors_Movies as optionTwo # Dylans file
 
 # Global Variables
 menuFlag = False
@@ -34,6 +35,7 @@ def newLoadFile():
     data = pd.read_csv("movies_initial.csv")
     C = data["imdbRating"]
     print(C)
+
 
 def loadCategory(chosenCategory):
     # Input a category name, loads specified category into an array and returns it.
@@ -81,6 +83,7 @@ while(menuFlag== False):
     elif(userOption == "2"):
         # Dylan Function
         print("Running Option 2")
+        #optionTwo.loadData(loadCategory("year"), loadCategory("cast"), loadCategory("imdbRating")
         menuFlag = True
     elif(userOption == "3"):
         # Reece Function
