@@ -30,22 +30,21 @@ def singGraph ():
     imdbRatings = [2, 3.5, 4, 9, 10.2, 11]
 
     fig, ax = plt.subplots()
-    ax.plot(years, movieAppearances, 'go--', label="Movies")
+    ax.plot(years, movieAppearances, 'go--', label="Movies") #Green Plot
 
     #-----Out of graph design-------#
     ax.set_title("Annual movie appearances", fontsize=16)
     ax.set_xlabel("Years", fontsize=12)
     ax.set_ylabel("Amount of movies", fontsize=12, color='g')
+    ax.plot(years, imdbRatings, 'ro--', label="Rating") #Red Plot #
 
+    #---Used to add second axis lable on the right of the graph---#
     ax1 = ax.twinx()
-    ax1.plot(years, imdbRatings, 'ro--', label="Rating")
-    ax1.set_ylabel("IMDB rating", fontsize=12 , color='r')
+    ax1.set_ylabel("IMDB rating Average", fontsize=12 , color='r')
 
-    
-    ax.legend()
-    ax1.legend()
-
-    ax.grid(True)
+    ax.legend()#adds axis lables on the graph
+   
+    ax.grid(True) # Shows grid design for easier viewing 
     plt.show()
 
 
