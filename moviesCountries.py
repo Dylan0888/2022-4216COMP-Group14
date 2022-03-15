@@ -10,9 +10,12 @@ Steps:
     - Asks lower limit year
     - Asks upper limit year
     - Generates Heatmap of movies per countries between the two given dates
+    - Change from coordinates to long lat method.
 
 Extra:
     - Hover Over/ Click plotted points for more information
+
+
 
 """
 
@@ -33,7 +36,7 @@ movieTitle = ["Spiderman", "Batman", "Harry Potter"]
 movieCountry = ["USA", "UK", "Spain"]
 year = ["", "", ""]
 imageFile = "Resources\\WorldMap.png"
-coordsFile = "Resources\\MapCoords.csv"
+coordsFile = "Resources\\countryCoords.csv"
 coordsArray = []
 dataArray= []
 
@@ -66,11 +69,13 @@ def loadMapCoordinates():
     print("[FILE] Loading Coordinates File! Please Wait...")
     rowCounter = 0
 
+    # coords file format: country_code,latitude,longitude,country
+
     with open(coordsFile, newline='') as movieFile:
         spamreader = csv.reader(movieFile, delimiter= ',')
         for row in spamreader:
             print("[FILE] Reading row Number ", row)
-            rowToAdd = row[0] + ","+ row[1] + "," + row[2] + "," + "0"
+            rowToAdd = row[3] + ","+ row[1] + "," + row[2] + "," + "0"
             coordsArray.append(rowToAdd) # row with default amount 0
             # coordsArray format:
             # country, x, y, amount
@@ -84,13 +89,14 @@ def plotOnMap():
     # Plot Options
     data = image.imread(imageFile)
     plt.title("Movies per Country")
-    plt.xlim(0, 1200)
-    plt.ylim(645, 0)
+   # plt.xlim(0, 1200)
+   # plt.ylim(645, 0)
+    plt.xlim(-180, 180) # coordinates changed to longitude latitude
+    plt.ylim(-90, 90)
     splitArray = []
 
     # add Data Points
     print("[PLOT] Plotting Data, Please Wait...")
-    print("Length is ", len(coordsArray))
     for i in range (len(coordsArray)):
         print(coordsArray[i])
         splitArray = coordsArray[i].split(",")
@@ -103,10 +109,11 @@ def plotOnMap():
             [3] = amount of films
         """
         addPoint(float(splitArray[1]),float(splitArray[2]), colourFormula(int(splitArray[3])), sizeFormula(splitArray[3])) # plots the point on the graph (see addPoint function)
-        print("[PLOT] Plotted Country data for ", splitArray[0], "!")
+        print("[PLOT] Plotted Country data for " + splitArray[0] + "!")
 
     print("[PLOT] Finished Plotting Data, Displaying Map...")
-    plt.imshow(data)
+    plt.imshow(data, extent=(-180, 180, -90, 90))
+    plt.annotate("Hello World", xy=(5, 500), xytext=(6, 550))
     plt.show()
 
 def addPoint(x, y, colour, size):
@@ -150,3 +157,4 @@ def colourFormula(amt):
         chosenColour = "orange"
 
     return chosenColour
+
