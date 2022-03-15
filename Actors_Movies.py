@@ -6,9 +6,14 @@ import numpy as np
 #Global Vaiables 
 userSelection = False
 
+def loadData():
+    print("yes")
 
 #Loads graph for single selected actor 
 def singGraph():
+    actor = input("Please enter your actor of choice:")
+
+
     print("Loading graph...")
 
     years = [1,2,3,4,5,6]
@@ -19,7 +24,8 @@ def singGraph():
     ax.plot(years, movieAppearances, 'go--', label="Movies") #Green Plot
 
     #-----Out of graph design-------#
-    ax.set_title("Annual movie appearances", fontsize=16)
+    fig.suptitle("Annual movie appearances", fontsize=18)
+    ax.set_title("Actor: "+ actor, fontsize=14)
     ax.set_xlabel("Years", fontsize=12)
     ax.set_ylabel("Amount of movies", fontsize=12, color='g')
     ax.plot(years, imdbRatings, 'ro--', label="Rating") #Red Plot #
@@ -34,6 +40,9 @@ def singGraph():
     plt.show()
 
 def multiGraph():
+    actor1 = input("Please enter your first actor:")
+    actor2 = input("Please enter your second actor:")
+    
     print("Loading multiple graphs....")
 
     actorOneYears = [1,2,3,4,5,6]
@@ -43,8 +52,8 @@ def multiGraph():
     fig, axs = plt.subplots(1,2, sharey=True)
 
     #-----Out of graph design-------#
-    axs[0].set_title("Actor 1", fontsize=16)
-    axs[1].set_title("Actor 2", fontsize=16)
+    axs[0].set_title(actor1, fontsize=16)
+    axs[1].set_title(actor2, fontsize=16)
     axs[0].set_xlabel("years", fontsize=12)
     axs[1].set_xlabel("years", fontsize=12)
     axs[0].set_ylabel("Total of movies", fontsize=12)
