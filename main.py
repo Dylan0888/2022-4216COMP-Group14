@@ -5,6 +5,8 @@ import pandas as pd
 
 # Import files of Everyone 
 import moviesCountries as mc  # Mackenzie's File
+import Genre_Awards as ga # reeces pieces file
+#import Actors_Movies as optionTwo # Dylans file
 
 # Global Variables
 menuFlag = False
@@ -34,6 +36,7 @@ def newLoadFile():
     data = pd.read_csv("movies_initial.csv")
     C = data["imdbRating"]
     print(C)
+
 
 def loadCategory(chosenCategory):
     # Input a category name, loads specified category into an array and returns it.
@@ -65,7 +68,7 @@ while(menuFlag== False):
     \t 2. Graph 2 - Actors an Movies Per Year
     \t 3. Graph 3 - Something
     \t 4. Graph 4 - Something
-    \t 5. Graph 5 - Something
+    \t 5. Graph 5 - Genre Awards
     \t 6. Graph 6 - Something 
     \t 7. Quit
     -----------------------------------
@@ -81,9 +84,10 @@ while(menuFlag== False):
     elif(userOption == "2"):
         # Dylan Function
         print("Running Option 2")
+        #optionTwo.loadData#(loadCategory("year"), loadCategory("cast"), loadCategory("imdbRating"))
         menuFlag = True
     elif(userOption == "3"):
-        # Reece Function
+        # Mohammed Function
         print("Running Option 3")
         menuFlag = True
     elif(userOption == "4"):
@@ -91,9 +95,11 @@ while(menuFlag== False):
         print("Running Option 4")
         menuFlag = True
     elif(userOption == "5"):
-        # Mohammed Function 
+        # Reece Function 
         print("Running Option 5")
+        ga.createGraph(loadCategory("year"), loadCategory("genre"), loadCategory("awards"))
         menuFlag = True
+
     elif(userOption == "6"):
         # Bradley Function
         print("Running Option 6")    

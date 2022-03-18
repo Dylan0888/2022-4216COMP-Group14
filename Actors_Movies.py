@@ -1,28 +1,19 @@
-# shows menu, asks to enter actor 
-# can present one actor or asks to disaply multple acotrs to compare to each oterh 
-# Opt 1: enter acotor ---- shows a unqiue graph to the acotr 
-# opt 2: Allows multiple acotrs to be entered to compare 
 
-# adds imdb rating for average movie the acotors appear in 
-
-
-# option 1 shows data in function plots 
-# option 2 shows data in multi bar plot 
-
-# Imports
-
+# --- Imports ---#
 import matplotlib.pyplot as plt
 import numpy as np
-
-
-
 
 #Global Vaiables 
 userSelection = False
 
+def loadData():
+    print("yes")
 
 #Loads graph for single selected actor 
-def singGraph ():
+def singGraph():
+    actor = input("Please enter your actor of choice:")
+
+
     print("Loading graph...")
 
     years = [1,2,3,4,5,6]
@@ -30,27 +21,28 @@ def singGraph ():
     imdbRatings = [2, 3.5, 4, 9, 10.2, 11]
 
     fig, ax = plt.subplots()
-    ax.plot(years, movieAppearances, 'go--', label="Movies")
+    ax.plot(years, movieAppearances, 'go--', label="Movies") #Green Plot
 
     #-----Out of graph design-------#
-    ax.set_title("Annual movie appearances", fontsize=16)
+    fig.suptitle("Annual movie appearances", fontsize=18)
+    ax.set_title("Actor: "+ actor, fontsize=14)
     ax.set_xlabel("Years", fontsize=12)
     ax.set_ylabel("Amount of movies", fontsize=12, color='g')
+    ax.plot(years, imdbRatings, 'ro--', label="Rating") #Red Plot #
 
+    #---Used to add second axis lable on the right of the graph---#
     ax1 = ax.twinx()
-    ax1.plot(years, imdbRatings, 'ro--', label="Rating")
-    ax1.set_ylabel("IMDB rating", fontsize=12 , color='r')
+    ax1.set_ylabel("IMDB rating Average", fontsize=12 , color='r')
 
-    
-    ax.legend()
-    ax1.legend()
-
-    ax.grid(True)
+    ax.legend()#adds axis lables on the graph
+   
+    ax.grid(True) # Shows grid design for easier viewing 
     plt.show()
 
-
-
-def multiGraph ():
+def multiGraph():
+    actor1 = input("Please enter your first actor:")
+    actor2 = input("Please enter your second actor:")
+    
     print("Loading multiple graphs....")
 
     actorOneYears = [1,2,3,4,5,6]
@@ -60,8 +52,8 @@ def multiGraph ():
     fig, axs = plt.subplots(1,2, sharey=True)
 
     #-----Out of graph design-------#
-    axs[0].set_title("Actor 1", fontsize=16)
-    axs[1].set_title("Actor 2", fontsize=16)
+    axs[0].set_title(actor1, fontsize=16)
+    axs[1].set_title(actor2, fontsize=16)
     axs[0].set_xlabel("years", fontsize=12)
     axs[1].set_xlabel("years", fontsize=12)
     axs[0].set_ylabel("Total of movies", fontsize=12)
@@ -88,18 +80,9 @@ while (userSelection != True):
         userSelection = True
         singGraph()
         
-        
-
     elif userChoice == "2":
         userSelection = True
         multiGraph ()
     
     else:
         print("Please select a valid input!")
-
-
-
-
-
-
-
