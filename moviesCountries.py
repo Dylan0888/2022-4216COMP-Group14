@@ -35,7 +35,8 @@ import pandas as pd
 movieTitle = ["Spiderman", "Batman", "Harry Potter"]
 movieCountry = ["USA", "UK", "Spain"]
 year = ["", "", ""]
-imageFile = "Resources\\WorldMap.png"
+#imageFile = "Resources\\WorldMap.png"
+imageFile = "Resources\\world-map.jpg"
 coordsFile = "Resources\\countryCoords.csv"
 coordsArray = []
 dataArray= []
@@ -75,7 +76,7 @@ def loadMapCoordinates():
         spamreader = csv.reader(movieFile, delimiter= ',')
         for row in spamreader:
             print("[FILE] Reading row Number ", row)
-            rowToAdd = row[3] + ","+ row[1] + "," + row[2] + "," + "0"
+            rowToAdd = row[3] + ","+ row[2] + "," + row[1] + "," + "0"
             coordsArray.append(rowToAdd) # row with default amount 0
             # coordsArray format:
             # country, x, y, amount
@@ -93,6 +94,9 @@ def plotOnMap():
    # plt.ylim(645, 0)
     plt.xlim(-180, 180) # coordinates changed to longitude latitude
     plt.ylim(-90, 90)
+    plt.imshow(data, extent=(-180, 180, -90, 90))
+    plt.annotate("Hello World", xy=(5, 500), xytext=(6, 550))
+    plt.grid(b=None)
     splitArray = []
 
     # add Data Points
@@ -112,8 +116,8 @@ def plotOnMap():
         print("[PLOT] Plotted Country data for " + splitArray[0] + "!")
 
     print("[PLOT] Finished Plotting Data, Displaying Map...")
-    plt.imshow(data, extent=(-180, 180, -90, 90))
-    plt.annotate("Hello World", xy=(5, 500), xytext=(6, 550))
+#    plt.plot(-95.712891,37.09024, 'bo-', color='blue', ms=50, alpha=0.5) #test plot
+
     plt.show()
 
 def addPoint(x, y, colour, size):
