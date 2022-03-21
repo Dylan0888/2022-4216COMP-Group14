@@ -6,7 +6,7 @@ import pandas as pd
 # Import files of Everyone 
 import moviesCountries as mc  # Mackenzie's File
 import Genre_Awards as ga # reeces pieces file
-#import Actors_Movies as optionTwo # Dylans file
+import Actors_Movies as am # Dylans file
 
 # Global Variables
 menuFlag = False
@@ -84,7 +84,7 @@ while(menuFlag== False):
     elif(userOption == "2"):
         # Dylan Function
         print("Running Option 2")
-        #optionTwo.loadData#(loadCategory("year"), loadCategory("cast"), loadCategory("imdbRating"))
+        am.menuOptions(loadCategory("year"), loadCategory("cast"), loadCategory("imdbRating"))
         menuFlag = True
     elif(userOption == "3"):
         # Mohammed Function
