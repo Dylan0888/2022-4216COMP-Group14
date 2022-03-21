@@ -3,11 +3,33 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-#Global Vaiables 
-userSelection = False
 
-def loadData():
-    print("yes")
+
+def menuOptions(year, cast, imdbRating):
+    # Users choice will lead to a spacific graph being shown
+    userSelection = False 
+    while (userSelection != True):
+        userChoice = input("""
+            Would you like to visulise a single actor and their roles or compare two actors?
+
+            ------ Options ------
+        \t 1. Single Actor
+        \t 2. Multiple Actors 
+            ---------------------
+            """)
+
+        if userChoice == "1":
+            userSelection = True
+            singGraph()
+            
+        elif userChoice == "2":
+            userSelection = True
+            multiGraph ()
+        
+        else:
+            print("Please select a valid input!")
+
+
 
 #Loads graph for single selected actor 
 def singGraph():
@@ -65,24 +87,3 @@ def multiGraph():
     plt.show()
 
 
-# Users choice will lead to a spacific graph being shown 
-while (userSelection != True):
-    userChoice = input("""
-        Would you like to visulise a single actor and their roles or compare two actors?
-
-        ------ Options ------
-    \t 1. Single Actor
-    \t 2. Multiple Actors 
-        ---------------------
-        """)
-
-    if userChoice == "1":
-        userSelection = True
-        singGraph()
-        
-    elif userChoice == "2":
-        userSelection = True
-        multiGraph ()
-    
-    else:
-        print("Please select a valid input!")
