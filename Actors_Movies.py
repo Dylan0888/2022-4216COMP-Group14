@@ -2,7 +2,7 @@
 # --- Imports ---#
 import matplotlib.pyplot as plt
 import numpy as np
-
+import pandas as pd
 
 
 def menuOptions(year, cast, imdbRating):
@@ -20,7 +20,7 @@ def menuOptions(year, cast, imdbRating):
 
         if userChoice == "1":
             userSelection = True
-            singGraph()
+            singGraph(year, cast, imdbRating)
             
         elif userChoice == "2":
             userSelection = True
@@ -30,27 +30,55 @@ def menuOptions(year, cast, imdbRating):
             print("Please select a valid input!")
 
 
+# scans through file and gets the actors and imdb ratings 
+#def getSelected():
+ #   actor = pd.read_csv("movies_initial.csv")
+  #  compareActors = actor["cast"]
+    #print(compareActors) # tests the outputs 
+
+
 
 #Loads graph for single selected actor 
-def singGraph():
-    actor = input("Please enter your actor of choice:")
+def singGraph(year, cast, imdbRating):
+    chosenActor = input("Please enter your actor of choice:")
+    appYear = [] #Actor Appereances per year 
+    movieAppearances = []
+    
+    print("Compering your choice to the records... ")
+    
+    actor = pd.read_csv("movies_initial.csv")
+    compareActors = actor["cast"]
 
-
+    for i in range (len(cast)):
+        if cast[i] == chosenActor:
+            for l in range (len(year)):
+                appYear = year
+                movieAppearances.count 
+                
+    
+    
+    
+    
+    
+    
+    
+    
+    
     print("Loading graph...")
-
-    years = [1,2,3,4,5,6]
-    movieAppearances = [1,2,3,4,5,6] 
+    #------------Example graph data--------#
+    #years = [1,2,3,4,5,6]
+    #movieAppearances = [1,2,3,4,5,6] 
     imdbRatings = [2, 3.5, 4, 9, 10.2, 11]
 
     fig, ax = plt.subplots()
-    ax.plot(years, movieAppearances, 'go--', label="Movies") #Green Plot
+    ax.plot(appYear, movieAppearances, 'go--', label="Movies") #Green Plot
 
     #-----Out of graph design-------#
     fig.suptitle("Annual movie appearances", fontsize=18)
-    ax.set_title("Actor: "+ actor, fontsize=14)
+    ax.set_title("Actor: "+ chosenActor, fontsize=14)
     ax.set_xlabel("Years", fontsize=12)
     ax.set_ylabel("Amount of movies", fontsize=12, color='g')
-    ax.plot(years, imdbRatings, 'ro--', label="Rating") #Red Plot #
+    ax.plot(appYear, imdbRatings, 'ro--', label="Rating") #Red Plot #
 
     #---Used to add second axis lable on the right of the graph---#
     ax1 = ax.twinx()
