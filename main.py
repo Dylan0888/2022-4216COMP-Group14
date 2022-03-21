@@ -66,11 +66,9 @@ while(menuFlag== False):
     \t  -+- Menu Options: -+-
     \t 1. Graph 1 - Movies Per Country
     \t 2. Graph 2 - Actors an Movies Per Year
-    \t 3. Graph 3 - Something
-    \t 4. Graph 4 - Something
-    \t 5. Graph 5 - Genre Awards
-    \t 6. Graph 6 - Something 
-    \t 7. Quit
+    \t 3. Graph 3 - Genre Awards
+    \t 4. Graph 4 - Something 
+    \t 5. Quit
     -----------------------------------
     """)
 
@@ -87,26 +85,17 @@ while(menuFlag== False):
         am.menuOptions(loadCategory("year"), loadCategory("cast"), loadCategory("imdbRating"))
         menuFlag = True
     elif(userOption == "3"):
-        # Mohammed Function
+         # Reece Function 
         print("Running Option 3")
-        menuFlag = True
-    elif(userOption == "4"):
-        # Sai Function
-        print("Running Option 4")
-        menuFlag = True
-    elif(userOption == "5"):
-        # Reece Function 
-        print("Running Option 5")
         ga.createGraph(loadCategory("year"), loadCategory("genre"), loadCategory("awards"))
         menuFlag = True
-
-    elif(userOption == "6"):
+    elif(userOption == "4"):
         # Bradley Function
-        print("Running Option 6")    
-        menuFlag = True 
-    elif(userOption == "7"):
+        print("Running Option 4")
+        menuFlag = True  
+    elif(userOption == "5"):
         # Exit Function
         print("Exiting the Program...\n ")    
         menuFlag = True 
     else: 
-        print("Invalid Input! Please Pick a Menu Option (1-6).") # Validation to ensure Number is between 1 and 7
+        print("Invalid Input! Please Pick a Menu Option (1-5).") # Validation to ensure Number is between 1 and 7
