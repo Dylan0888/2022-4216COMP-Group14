@@ -99,6 +99,7 @@ def singGraph(year, cast, imdbRating):
     #---Used to add second axis lable on the right of the graph---#
     ax1 = ax.twinx()
     ax1.set_ylabel("IMDB rating Average", fontsize=12 , color='r')
+    
 
     ax.legend()#adds axis lables on the graph
    
