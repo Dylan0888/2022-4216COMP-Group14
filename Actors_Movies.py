@@ -57,17 +57,18 @@ def singGraph(year, cast, imdbRating):
         for j in range(len(actorList)):
             if actorList[j] == str(chosenActor):
                 print("Found Actor")
-                #addAppear(year, appereanceYear, actorAppearances)
+                
 
                 if len(appereanceYear) != 0:
-                    for k in range(len(appereanceYear)):
-                        if int(appereanceYear[k]) == int(year[i]):
-                            actorAppearances[k] = int(actorAppearances[k]) + 1
-                            #print("Test 222222")
-                        else:
-                            appereanceYear.append(year[i])
-                            actorAppearances.append(int(1))
-                           
+                    if year[i] in appereanceYear:
+                        for k in range(len(appereanceYear)):
+                            if int(appereanceYear[k]) == int(year[i]):
+                                actorAppearances[k] = int(actorAppearances[k]) + 1
+                                #print("Test 222222")
+                    else:
+                        appereanceYear.append(year[i])
+                        actorAppearances.append(int(1))
+     
                 else:
                     appereanceYear.append(year[i])
                     actorAppearances.append(int(1))
