@@ -95,15 +95,17 @@ def singGraph(year, cast, imdbRating):
     ax.set_xlabel("Years", fontsize=12)
     ax.set_ylabel("Amount of movies", fontsize=12, color='g')
     ax.plot(getImdb, 'ro--', label="Rating") #Red Plot #
+    ax.set_yticks(range(1, 11, 1))
 
     #---Used to add second axis lable on the right of the graph---#
     ax1 = ax.twinx()
     ax1.set_ylabel("IMDB rating Average", fontsize=12 , color='r')
-    
+    ax1.set_yticks(range(1, 11, 1))
 
+    plt.xlim([1, 10])
     ax.legend()#adds axis lables on the graph
-   
-    #ax.grid(True) # Shows grid design for easier viewing 
+    ax.grid(True) # Shows grid design for easier viewing 
+    ax1.grid(False)
     plt.show()
 
 def multiGraph():
