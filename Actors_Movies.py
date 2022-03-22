@@ -38,25 +38,66 @@ def menuOptions(year, cast, imdbRating):
 
 
 
+
+
+
 #Loads graph for single selected actor 
 def singGraph(year, cast, imdbRating):
-    chosenActor = input("Please enter your actors full name: ")
-    appYear = [] #Actor Appereances per year 
-    movieAppearances = []
     
+    appereanceYear = [] #Actor Appereances per year 
+    actorAppearances = []
+    actorList = []
     print("Compering your choice to the records... ")
     
-    actor = pd.read_csv("movies_initial.csv")
-    compareActors = actor["cast"]
+# ask for actor 
+    chosenActor = input("Please enter your actors full name: ")
+# search for actor 
+    for i in range(len(cast)):
+        actorList = str(cast[i]).split(",")
+        for j in range(len(actorList)):
+            if actorList[j] == str(chosenActor):
+                print("Found Actor")
+                #addAppear(year, appereanceYear, actorAppearances)
 
-    for i in range (len(cast)):
-        if cast[i] == chosenActor:
-            movieAppearances = movieAppearances + 1
-                
-        else:
-            print("Sorry your actor of choice is not in the database, please enter another.")
-            break
-    print(movieAppearances)
+                if len(appereanceYear) != 0:
+                    for k in range(len(appereanceYear)):
+                        if int(appereanceYear[k]) == int(year):
+                            actorAppearances[k] = int(actorAppearances[k]) + 1
+                            print("Test 222222")
+                        else:
+                            appereanceYear.append(year)
+                            actorAppearances[len(appereanceYear)] = 1
+                            print("Test 1")
+                else:
+                    appereanceYear.append(year)
+                    actorAppearances[len(appereanceYear)] = 1
+                    print("Test yeaasss")
+# get total amount of films theyre in
+
+# show on graph
+
+
+
+
+
+
+
+
+
+
+
+
+#    actor = pd.read_csv("movies_initial.csv")
+ #   compareActors = actor["cast"]
+
+ #   for i in range (len(cast)):
+ #       if cast[i] == chosenActor:
+ #           movieAppearances = movieAppearances + 1
+ #               
+ #       else:
+ #           print("Sorry your actor of choice is not in the database, please enter another.")
+ #           break
+ #   print(movieAppearances)
     
     
     
@@ -72,7 +113,7 @@ def singGraph(year, cast, imdbRating):
     imdbRatings = [2, 3.5, 4, 9, 10.2, 11]
 
     fig, ax = plt.subplots()
-    ax.plot(appYear, movieAppearances, 'go--', label="Movies") #Green Plot
+    ax.plot(appereanceYear, actorAppearances, 'go--', label="Movies") #Green Plot
 
     #-----Out of graph design-------#
     fig.suptitle("Annual movie appearances", fontsize=18)
