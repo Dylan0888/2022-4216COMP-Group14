@@ -53,7 +53,7 @@ def singGraph(year, cast, imdbRating):
     chosenActor = input("Please enter your actors full name: ")
 # search for actor 
     for i in range(len(cast)):
-        actorList = str(cast[i]).split(",")
+        actorList = str(cast[i]).split(", ")
         for j in range(len(actorList)):
             if actorList[j] == str(chosenActor):
                 print("Found Actor")
@@ -61,19 +61,19 @@ def singGraph(year, cast, imdbRating):
 
                 if len(appereanceYear) != 0:
                     for k in range(len(appereanceYear)):
-                        if int(appereanceYear[k]) == int(year):
+                        if int(appereanceYear[k]) == int(year[i]):
                             actorAppearances[k] = int(actorAppearances[k]) + 1
-                            print("Test 222222")
+                            #print("Test 222222")
                         else:
-                            appereanceYear.append(year)
-                            actorAppearances[len(appereanceYear)] = 1
-                            print("Test 1")
+                            appereanceYear.append(year[i])
+                            actorAppearances.append(int(1))
+                           
                 else:
-                    appereanceYear.append(year)
-                    actorAppearances[len(appereanceYear)] = 1
+                    appereanceYear.append(year[i])
+                    actorAppearances.append(int(1))
                     print("Test yeaasss")
 # get total amount of films theyre in
-
+    print (appereanceYear, " and ",actorAppearances)
 # show on graph
 
 
