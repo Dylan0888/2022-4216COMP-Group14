@@ -40,7 +40,7 @@ def menuOptions(year, cast, imdbRating):
 
 #Loads graph for single selected actor 
 def singGraph(year, cast, imdbRating):
-    chosenActor = input("Please enter your actor of choice:")
+    chosenActor = input("Please enter your actors full name: ")
     appYear = [] #Actor Appereances per year 
     movieAppearances = []
     
@@ -51,11 +51,12 @@ def singGraph(year, cast, imdbRating):
 
     for i in range (len(cast)):
         if cast[i] == chosenActor:
-            for l in range (len(year)):
-                appYear = year
-                movieAppearances.count 
+            movieAppearances = movieAppearances + 1
                 
-    
+        else:
+            print("Sorry your actor of choice is not in the database, please enter another.")
+            break
+    print(movieAppearances)
     
     
     
@@ -78,7 +79,7 @@ def singGraph(year, cast, imdbRating):
     ax.set_title("Actor: "+ chosenActor, fontsize=14)
     ax.set_xlabel("Years", fontsize=12)
     ax.set_ylabel("Amount of movies", fontsize=12, color='g')
-    ax.plot(appYear, imdbRatings, 'ro--', label="Rating") #Red Plot #
+    #ax.plot(appYear, imdbRatings, 'ro--', label="Rating") #Red Plot #
 
     #---Used to add second axis lable on the right of the graph---#
     ax1 = ax.twinx()
