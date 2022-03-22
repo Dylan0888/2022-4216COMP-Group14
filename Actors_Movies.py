@@ -37,10 +37,6 @@ def menuOptions(year, cast, imdbRating):
     #print(compareActors) # tests the outputs 
 
 
-
-
-
-
 #Loads graph for single selected actor 
 def singGraph(year, cast, imdbRating):
     
@@ -78,35 +74,6 @@ def singGraph(year, cast, imdbRating):
 # show on graph
 
 
-
-
-
-
-
-
-
-
-
-
-#    actor = pd.read_csv("movies_initial.csv")
- #   compareActors = actor["cast"]
-
- #   for i in range (len(cast)):
- #       if cast[i] == chosenActor:
- #           movieAppearances = movieAppearances + 1
- #               
- #       else:
- #           print("Sorry your actor of choice is not in the database, please enter another.")
- #           break
- #   print(movieAppearances)
-    
-    
-    
-    
-    
-    
-    
-    
     print("Loading graph...")
     #------------Example graph data--------#
     #years = [1,2,3,4,5,6]
