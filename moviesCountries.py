@@ -78,6 +78,16 @@ def loadMapCoordinates():
             print("[FILE] Reading row Number ", row)
             rowToAdd = row[3] + ","+ row[2] + "," + row[1] + "," + "0"
             coordsArray.append(rowToAdd) # row with default amount 0
+
+            if row[3] == "United Kingdom":
+                rowToAdd = "UK" + ","+ row[2] + "," + row[1] + "," + "0"
+                coordsArray.append(rowToAdd)
+            if row[3] == "United States":
+                rowToAdd = "USA" + ","+ row[2] + "," + row[1] + "," + "0"  
+                coordsArray.append(rowToAdd)
+            if row[3] == "Soviet Union":
+                rowToAdd = "Russia" + ","+ row[2] + "," + row[1] + "," + "0" 
+                coordsArray.append(rowToAdd)
             # coordsArray format:
             # country, x, y, amount
 
@@ -117,12 +127,27 @@ def plotOnMap():
 
     print("[PLOT] Finished Plotting Data, Displaying Map...")
 #    plt.plot(-95.712891,37.09024, 'bo-', color='blue', ms=50, alpha=0.5) #test plot
-
+    plt.plot(0,0, 'bo-', color='midnightblue', ms=20, alpha=0.5, label="Dark Blue: 5000+")
+    plt.plot(0,0, 'bo-', color='blue', ms=20, alpha=0.5, label="Blue: 1000-5000")
+    plt.plot(0,0, 'bo-', color='mediumpurple', ms=20, alpha=0.5, label="Purple: 500-1000")
+    plt.plot(0,0, 'bo-', color='darkviolet', ms=20, alpha=0.5, label="Dark Violet: 400-500")
+    plt.plot(0,0, 'bo-', color='violet', ms=20, alpha=0.5, label="Violet: 300-400")
+    plt.plot(0,0, 'bo-', color='magenta', ms=20, alpha=0.5, label="Magenta: 200-300")
+    plt.plot(0,0, 'bo-', color='crimson', ms=20, alpha=0.5, label="Crimson: 1-200")
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shadow=True, ncol=5)
     plt.show()
+    cid = plt.canvas.mpl_connect('button_press_event', onclick)
+
+    def onclick(event):
+        print('%s click: button=%d, x=%d, y=%d, xdata=%f, ydata=%f' %
+            ('double' if event.dblclick else 'single', event.button,
+            event.x, event.y, event.xdata, event.ydata))
+        print("Hello World")
 
 def addPoint(x, y, colour, size):
     #This functions takes the coordinates of a datapoint with the size and colour and plots it onto the graph
-    plt.plot(x, y, 'bo-', color=colour, ms=size, alpha=0.5)
+    if size != 0:
+        plt.plot(x, y, 'bo-', color=colour, ms=size, alpha=0.5)
 
 
 def sizeFormula(amtMovies):
@@ -132,11 +157,21 @@ def sizeFormula(amtMovies):
     if amt > 5000:
         size= amt*float(0.005)
     elif amt >= 1000:
-        size= amt*float(0.01)
+        size= amt*float(0.02)
     elif amt >= 500:
         size= amt*float(0.015)
-    elif amt < 500:
-        size= amt*float(0.02)
+    elif amt >= 100:
+        size= amt*float(0.04)
+    elif amt < 100:
+        if amt < 25:
+            size= amt
+        elif amt <= 0:
+            amt = 0
+        else:
+            size= amt*float(0.05)
+            if size <25:
+                diff = size-25
+                size = size + diff
 
     return int(size)
     #return 0.008 #- the smallest size if we use the above formula
@@ -152,13 +187,18 @@ def colourFormula(amt):
     """
     chosenColour = "grey" #default colour shows if error is made
     if amt >=5000:
-        chosenColour = "blue"
+        chosenColour = "midnightblue"
     elif amt >=1000:
-        chosenColour = "purple"
+        chosenColour = "blue"
     elif amt >=500:
-        chosenColour = "red"
-    elif amt <500:
-        chosenColour = "orange"
+        chosenColour = "mediumpurple"
+    elif amt >=400:
+        chosenColour = "darkviolet"
+    elif amt >=300:
+        chosenColour = "violet"
+    elif amt >=200:
+        chosenColour = "magenta"
+    elif amt <200:
+        chosenColour = "crimson"
 
     return chosenColour
-
