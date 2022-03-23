@@ -1,10 +1,10 @@
 
-# --- Imports ---#
+# ---- Imports ---- #
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-
+# ---- User Menu ---- #
 def menuOptions(year, cast, imdbRating):
     # Users choice will lead to a spacific graph being shown
     userSelection = False 
@@ -17,7 +17,7 @@ def menuOptions(year, cast, imdbRating):
         \t 2. Multiple Actors 
             ---------------------
             """)
-
+            
         if userChoice == "1":
             userSelection = True
             singGraph(year, cast, imdbRating)
@@ -29,72 +29,59 @@ def menuOptions(year, cast, imdbRating):
         else:
             print("Please select a valid input!")
 
-
-# scans through file and gets the actors and imdb ratings 
-#def getSelected():
- #   actor = pd.read_csv("movies_initial.csv")
-  #  compareActors = actor["cast"]
-    #print(compareActors) # tests the outputs 
-
-
 #Loads graph for single selected actor 
 def singGraph(year, cast, imdbRating):
-    
-    appereanceYear = [] #Actor Appereances per year 
+   
+    # ---- Variables for the loop to store data in ---- # 
+    appereanceYear = [] 
     actorAppearances = []
     actorList = []
     getImdb = []
-    print("Compering your choice to the records... ")
-    
+    actorFound = False 
 
-    chosenActor = input("Please enter your actors full name: ")
- 
-    for i in range(len(cast)):
-        actorList = str(cast[i]).split(", ")
-        #getImdb = imdbRating[i]
-        for j in range(len(actorList)):
-            if actorList[j] == str(chosenActor):
-                print("Found Actor")
-                if len(appereanceYear) != 0:
-                    if year[i] in appereanceYear:
-                        for k in range(len(appereanceYear)):
-                            if int(appereanceYear[k]) == int(year[i]):
-                                actorAppearances[k] = int(actorAppearances[k]) + 1
-                                
+    # ensures the user entered an actor that is in the data base 
+    while (actorFound != True):
+        chosenActor = input("Please enter your actors full name: ")
+        for i in range(len(cast)):
+            actorList = str(cast[i]).split(", ")
+            for j in range(len(actorList)):                
+                if actorList[j] == str(chosenActor): # if actor was found it will then find all the times their name appears 
+                    actorFound = True  
+                    if len(appereanceYear) != 0:
+                        if year[i] in appereanceYear: # when the actor is found the dates are stored in the array 
+
+                            for k in range(len(appereanceYear)):
+                                if int(appereanceYear[k]) == int(year[i]):
+                                    actorAppearances[k] = int(actorAppearances[k]) + 1 # if the same year is present then it will add one to that year    
+                        else:
+                            appereanceYear.append(year[i])
+                            actorAppearances.append(int(1))
+                            getImdb.append(imdbRating[i])    
                     else:
+                        # if the year does not exist in the array then it will add it 
                         appereanceYear.append(year[i])
                         actorAppearances.append(int(1))
-                        getImdb.append(imdbRating[i])
-                        
-     
-                else:
-                    appereanceYear.append(year[i])
-                    actorAppearances.append(int(1))
+        # Validation for the user entered actor 
+        if actorFound == False:
+            print("Actor was not found, please enter another actor. \n")   
+        elif actorFound == True:
+            print("Actor Found")   
                    
-                    
-
-    print ("The acotr was found in the following: ")
-    print (appereanceYear, " and ",actorAppearances)
-    print (getImdb)
+    # ------ Prints none graphed data out for the user ----- #
+    print ("The actor was found in the following: \n ")
     appereanceYear.sort()
-   
-
     print (appereanceYear, " and ",actorAppearances)
+    print (getImdb, "\n")
     print("Loading graph...")
-    #------------Example graph data--------#
-    #years = [1,2,3,4,5,6]
-    #movieAppearances = [1,2,3,4,5,6] 
-    #imdbRatings = [2, 3.5, 4, 9, 10.2, 11]
 
+    # ---- Graph Design ---- #
     fig, ax = plt.subplots()
     ax.plot(appereanceYear, actorAppearances, 'go--', label="Movies") #Green Plot
-
-    #-----Out of graph design-------#
     fig.suptitle("Annual movie appearances", fontsize=18)
     ax.set_title("Actor: "+ chosenActor, fontsize=14)
     ax.set_xlabel("Years", fontsize=12)
     ax.set_ylabel("Amount of movies", fontsize=12, color='g')
-    ax.plot(getImdb, 'ro--', label="Rating") #Red Plot #
+    ax.plot(getImdb, 'ro--', label="Rating") #Red Plot 
     ax.set_yticks(range(1, 11, 1))
 
     #---Used to add second axis lable on the right of the graph---#
@@ -102,6 +89,7 @@ def singGraph(year, cast, imdbRating):
     ax1.set_ylabel("IMDB rating Average", fontsize=12 , color='r')
     ax1.set_yticks(range(1, 11, 1))
 
+    # ---- design of graph ---- # 
     plt.xlim([1, 10])
     ax.legend()#adds axis lables on the graph
     ax.grid(True) # Shows grid design for easier viewing 
