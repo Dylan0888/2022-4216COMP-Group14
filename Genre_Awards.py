@@ -177,7 +177,7 @@ def createGraph(year, genre, awards):
        # header_row = next(csv_reader)
        # for i in range(len(header_row)):
        #     print (i, ':', header_row[i])
-        #    C = []
+        #    C = [dfdsfsdf]
             
     data = pd.read_csv("movies_initial.csv")
     D = data["genre"]
