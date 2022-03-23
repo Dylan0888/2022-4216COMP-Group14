@@ -1,6 +1,9 @@
 #imports
 import matplotlib.pyplot as plt
 import numpy as np
+import csv
+
+import pandas as pd
 
 plt.style.use('ggplot')
 
@@ -160,27 +163,46 @@ def createGraph(year, genre, awards):
 
 
     chosenGenre = genreMenu()
-    plt.title(chosenGenre)
-    plt.xlim(1850, 2020)
-    plt.ylim(0, 10)
-    plt.xlabel('year')
-    plt.ylabel('awards')
-    print("yeet 1")
-    for j in range (len(genre)): # validates to ensure genre = chosen genre by user
-        if genre[j] == chosenGenre:
-            for i in range (len(awards)): # checks if the movie has an award
-                awardsString = str(awards[i])
-               
-                if awardsString.count("win") > 0 : 
-                    print("found awards")
-                    splitArray = awards[i].split(" ")
-                
-                    print(year[i], splitArray[0])
+    
+    #print("yeet 1")
+    #for j in range (len(genre)): # validates to ensure genre = chosen genre by user
+   
+    #j = 0
+    #with open('movies_initial.csv') as topo_file:
+        #values = []
+        #for line in topo_file:
+            
+    #with open('movies_initial.csv', 'r') as f:
+       # csv_reader = csv.reader(f)
+       # header_row = next(csv_reader)
+       # for i in range(len(header_row)):
+       #     print (i, ':', header_row[i])
+        #    C = []
+            
+    data = pd.read_csv("movies_initial.csv")
+    D = data["genre"]
+    substring = chosenGenre
+    if substring in D:
+        E = data["awards"]  
+        if len(E) != 0:
+            C = data["year"]    
+            print(C,D,E)
+        
+    
 
-                    if splitArray[0] is int:
-                        plt.plot(year[i], splitArray[0]) # plorts movie by year and awards
-                
+           
+        
+         
+        
+
+       
+       
+    #plt.title(chosenGenre)
+    #plt.xlim(1850, 2020)
+    #plt.ylim(0, 10)
+    #plt.xlabel('year')
+    #plt.ylabel('awards')            
 
 #if awards array contains "win" gonna split the string into an array and take postion 0
     
-    plt.show()
+    #plt.show()
