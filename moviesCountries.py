@@ -63,7 +63,7 @@ def mainOptions(movieTitle, country, year):
 
         if(userOption == "1"):
             # Movies Per Country with set dates
-            createGraph(movieTitle, country)
+            createGraphMulti(movieTitle, country, year, 1874, 2016)
             menuFlag = True
         elif(userOption == "2"):
             # Movies Per Country between Dates
@@ -87,7 +87,6 @@ def mainOptions(movieTitle, country, year):
             menuFlag = True
         elif(userOption == "3"):
             # Return to Main Menu
-            createGraph(movieTitle, country)
             menuFlag = True
 
 
@@ -116,6 +115,7 @@ def createGraph(movieTitle, country):
 def createGraphMulti(movieTitle, country, year, yearOne, yearTwo):
     loadMapCoordinates()
 
+    print("[DATA] Loading all Countries onto Map...")
     # Temp Variables 
     countryMatch = False
     matchCounter = 0
@@ -137,6 +137,7 @@ def createGraphMulti(movieTitle, country, year, yearOne, yearTwo):
                         coordsArray[j] = splitArray[0] + "," + splitArray[1] + "," + splitArray[2] + "," + str(amtCounter)
     #Once Finished, a Graph will be Plotted...
     plotOnMap(yearOne, yearTwo)
+    print("[DATA] Map Successfully Created!")
 
 def loadMapCoordinates():
     # Function reads in the coordinates from the coordinates file (found in the resources folder)
@@ -148,7 +149,7 @@ def loadMapCoordinates():
     with open(coordsFile, newline='') as movieFile:
         spamreader = csv.reader(movieFile, delimiter= ',')
         for row in spamreader:
-            print("[FILE] Reading row Number ", row)
+            #print("[FILE] Reading row Number ", row)
             rowToAdd = row[3] + ","+ row[2] + "," + row[1] + "," + "0"
             coordsArray.append(rowToAdd) # row with default amount 0
 
@@ -196,17 +197,16 @@ def plotOnMap(yearOne, yearTwo):
             [3] = amount of films
         """
         addPoint(float(splitArray[1]),float(splitArray[2]), colourFormula(int(splitArray[3])), sizeFormula(splitArray[3])) # plots the point on the graph (see addPoint function)
-        print("[PLOT] Plotted Country data for " + splitArray[0] + "!")
 
     print("[PLOT] Finished Plotting Data, Displaying Map...")
 #    plt.plot(-95.712891,37.09024, 'bo-', color='blue', ms=50, alpha=0.5) #test plot
-    plt.plot(0,0, 'bo-', color='midnightblue', ms=20, alpha=0.5, label="Dark Blue: 5000+")
-    plt.plot(0,0, 'bo-', color='blue', ms=20, alpha=0.5, label="Blue: 1000-5000")
-    plt.plot(0,0, 'bo-', color='mediumpurple', ms=20, alpha=0.5, label="Purple: 500-1000")
-    plt.plot(0,0, 'bo-', color='darkviolet', ms=20, alpha=0.5, label="Dark Violet: 400-500")
-    plt.plot(0,0, 'bo-', color='violet', ms=20, alpha=0.5, label="Violet: 300-400")
-    plt.plot(0,0, 'bo-', color='magenta', ms=20, alpha=0.5, label="Magenta: 200-300")
-    plt.plot(0,0, 'bo-', color='crimson', ms=20, alpha=0.5, label="Crimson: 1-200")
+    plt.plot(0,200, 'bo-', color='midnightblue', ms=20, alpha=0.5, label="Dark Blue: 5000+")
+    plt.plot(0,200, 'bo-', color='blue', ms=20, alpha=0.5, label="Blue: 1000-5000")
+    plt.plot(0,200, 'bo-', color='mediumpurple', ms=20, alpha=0.5, label="Purple: 500-1000")
+    plt.plot(0,200, 'bo-', color='darkviolet', ms=20, alpha=0.5, label="Dark Violet: 400-500")
+    plt.plot(0,200, 'bo-', color='violet', ms=20, alpha=0.5, label="Violet: 300-400")
+    plt.plot(0,200, 'bo-', color='magenta', ms=20, alpha=0.5, label="Magenta: 200-300")
+    plt.plot(0,200, 'bo-', color='crimson', ms=20, alpha=0.5, label="Crimson: 1-200")
     plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shadow=True, ncol=5)
     plt.show()
 #    cid = plt.canvas.mpl_connect('button_press_event', onclick)
