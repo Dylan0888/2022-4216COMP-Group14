@@ -56,6 +56,32 @@ def loadCategory(chosenCategory):
         print("[ERROR] Specified Category is not a Valid Option!")
         return -1
 
+def filterCategory(category, option):
+    newCategory = []
+# Options:
+# betweenYears - remove ¿½ character and replace with -
+# oneYear - if multiple years shown, only show first
+# 
+# 
+# 
+# 
+
+    if option == "betweenYears":
+        for i in range(len(category)):
+            # remove ¿½ character and replace with -
+            if "¿½" in category[i]:
+                # takes only the first option 
+                category[i].replace("¿½", "-")
+    elif option == "oneYear":
+        for i in range(len(category)):
+            # remove ¿½ character and replace with -
+            if "¿½" in category[i]:
+                # takes only the first option 
+                newCategory = category[i].split("¿½")
+                category[i] = newCategory[0]
+    return category
+
+
 # Main Code
 
 loadFile() # Loads file when program is started
@@ -77,7 +103,8 @@ while(menuFlag== False):
     if(userOption == "1"):
         # Mackenzie Function
         print("Running Option 1")
-        mc.createGraph(loadCategory("title"), loadCategory("country"))
+        #mc.createGraph(loadCategory("title"), loadCategory("country"))
+        mc.mainOptions(loadCategory("title"), loadCategory("country"), filterCategory(loadCategory("year"), "oneYear"))
         menuFlag = True
     elif(userOption == "2"):
         # Dylan Function
