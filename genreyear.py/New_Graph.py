@@ -19,6 +19,7 @@ plt.ylim(100,5000)
 plt.xlim(1887, 2016)
 
 
+
 plt.figure(figsize=(10,10))
 plt.style.use('fivethirtyeight')
 plt.title("Movie genre vs year of release (1874 - 2016)", fontsize=18)
