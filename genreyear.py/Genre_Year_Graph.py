@@ -4,12 +4,14 @@ from dateutil.parser import parse
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np 
-df = pd.read_csv('https://github.com/selva86/datasets/raw/master/AirPassengers.csv')
+df = pd.read_excel(r"C:\Users\bradl\Downloads\coursework\movies.xlsx", 'movies_initial')
 
 # Prepare data
-df['year'] = [parse(d).year for d in df.date]
-df['month'] = [parse(d).strftime('%b') for d in df.date]
+ 
+x = df['year']
+y = df['NoOfMovies']
 years = df['year'].unique()
+NoOfMovies = df['NoOfMovies'].unique()
 
 # Draw Plot
 mycolors = ['tab:red', 'tab:blue', 'tab:green', 'tab:orange', 'tab:brown', 'tab:grey', 'tab:pink', 'tab:olive', 'deeppink', 'steelblue', 'firebrick', 'mediumseagreen']      

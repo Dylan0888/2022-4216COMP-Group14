@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np 
 #data = pd.read_csv('movies_initial.csv')
 
-#Functions 
+#Function
 
 def genreselect():
     print('------Please Select a genre------')
