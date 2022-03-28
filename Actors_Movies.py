@@ -96,11 +96,10 @@ def singGraph(year, cast, imdbRating):
     ax1.grid(False)
     plt.show()
 
-
 # ---- Loads Graph for double actor comparison ---- # 
 def multiGraph(year, cast):
     
-    
+    # ---- Arrays used to store the data from the 'movies_initial.csv' for graph use ---- # 
     # a1 = Actor 1
     a1AppereanceYear = []
     a1ActorAppearances = []
@@ -175,7 +174,7 @@ def multiGraph(year, cast):
     fig, axs = plt.subplots(1,2, sharey=True)
 
     #-----Out of graph design-------#
-    axs[0].set_title(a1, fontsize=16)
+    axs[0].set_title(a1, fontsize=16) # sets the title of the graph with the actors name so the graphs can be distinguished from each other #
     axs[0].set_xlabel("years", fontsize=10)
     axs[0].set_ylabel("Total of movies", fontsize=12)
     axs[0].plot(a1AppereanceYear, a1ActorAppearances, 'gD:')
