@@ -2,207 +2,251 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import csv
-
 import pandas as pd
 
-plt.style.use('ggplot')
-
 #Genre menu options
-def genreMenu():
-    print("-------( Select a genre )-----------")
-    print("[1] Action")
-    print("[2] Adult")
-    print("[3] Adventure")
-    print("[4] Animation")
-    print("[5] Biography")
-    print("[6] Comedy")
-    print("[7] Crime")
-    print("[8] Documentary")
-    print("[9] Drama")
-    print("[10] Family")
-    print("[11] Fantasy")
-    print("[12] Film-Noir")
-    print("[13] History")
-    print("[14] Horror")
-    print("[15] Music/Musical")
-    print("[16] Mystery")
-    print("[17] Romance")
-    print("[18] Sci-fi")
-    print("[19] Sport")
-    print("[20] Thriller")
-    print("[21] War")
-    print("[22] Western")
-    print("[0] Exit")
+def genreMenu(year, genre, awards):
+    
+    genreSelected = False
 
-#Asking user for input
-    option = int(input("Enter genre choice: ")) 
+    while (genreSelected == False):
+        userChoice = input("""
 
-    while option != 0:
-        if option == 1:
-            #Action stuff goes here
+        ------- Select a genre -----------
+        [1] Action
+        [2] Adult
+        [3] Adventure
+        [4] Animation
+        [5] Biography
+        [6] Comedy
+        [7] Crime
+        [8] Documentary
+        [9] Drama
+        [10] Family
+        [11] Fantasy
+        [12] Film-Noir
+        [13] History
+        [14] Horror
+        [15] Music/Musical 
+        [16] Mystery 
+        [17] Romance 
+        [18] Sci-fi 
+        [19] Sport
+        [20] Thriller
+        [21] War
+        [22] Western
+        [0] Exit
+        
+        --Please select a genre--
+            """)
 
+        if userChoice == "1":
+            genreSelected = True
+            choice = "Action"
+            print("Action genre selected")
 
-            print("Action Genre")
-            return 'Action'
+        elif userChoice == "2":
+            genreSelected = True
+            choice = "Adult"
+            print("Adult genre selected")
 
-        elif option == 2:
-            #Adventure stuff goes here
-            print("Adult genre")
-            return 'Adult'
+        elif userChoice == "3":
+            genreSelected = True
+            choice = "Adventure"
+            print("Adventure genre selected") 
 
-        elif option == 3:
-            #Adventure stuff goes here
-            print("Adventure genre")
-            return 'Adventure'
+        elif userChoice == "4":
+            genreSelected = True
+            choice = "Animation"
+            print("Animation genre selected")
 
-        elif option == 4:
-            #Animation stuff goes here
-            print("Animation genre")
-            return 'Animation'
+        elif userChoice == "5":
+            genreSelected = True
+            choice = "Biography"
+            print("Biograpghy genre selected")
 
-        elif option == 5:
-            #Biography stuff goes here
-            print("Biography genre")  
-            return 'Biography'
+        elif userChoice == "6":
+            genreSelected = True
+            choice = "Comedy"
+            print("Comedy genre selected")
 
-        elif option == 6:
-            #Comdey stuff goes here
-            print("Comedy genre")
-            return 'Comedy'
+        elif userChoice == "7":
+            genreSelected = True
+            choice = "Crime"
+            print("Crime genre selected")
 
-        elif option == 7:
-            #Crime stuff goes here
-            print("Crime genre")
-            return 'Crime'
+        elif userChoice == "8":
+            genreSelected = True
+            choice = "Documentary"
+            print("Documentary genre selected")
 
-        elif option == 8:
-            #Documentary stuff goes here
-            print("Documentary genre") 
-            return 'Documentary'
+        elif userChoice == "9":
+            genreSelected = True
+            choice = "Drama"
+            print("Drama genre selected")  
 
-        elif option == 9:
-            #Drama stuff goes here
-            print("Drama genre")
-            return 'Drama'
+        elif userChoice == "10":
+            genreSelected = True
+            choice = "Family"
+            print("Family genre selected")  
 
-        elif option == 10:
-            #Family stuff goes here
-            print("Family genre")
-            return 'Family'
+        elif userChoice == "11":
+            genreSelected = True
+            choice = "Fantasy"
+            print("Fantasy genre selected")
 
-        elif option == 11:
-            #Fantasy stuff goes here
-            print("Fantasy genre") 
-            return 'Fantasy'
+        elif userChoice == "12":
+            genreSelected = True
+            choice = "Film-noir"
+            print("Film-Noir genre selected")
 
-        elif option == 12:
-            #Film-Noir stuff goes here
-            print("Film-Noir genre")
-            return 'Film-Noir'
+        elif userChoice == "13":
+            genreSelected = True
+            choice = "History"
+            print("History genre selected") 
 
-        elif option == 13:
-            #History stuff goes here
-            print("History genre")
-            return 'History'
+        elif userChoice == "14":
+            genreSelected = True
+            choice = "Horror"
+            print("Horror genre selected")
 
-        elif option == 14:
-            #Horror stuff goes here
-            print("Horror genre")   
-            return 'Horror'
+        elif userChoice == "15":
+            genreSelected = True
+            choice = "Music/Musical"
+            print("Music/Musical genre selected")
 
-        elif option == 15:
-            #Music/Musical stuff goes here
-            print("Music/Musical genre")
-            return 'Music/Musical'
+        elif userChoice == "16":
+            genreSelected = True
+            choice = "Mystery"
+            print("Mystery genre selected")
 
-        elif option == 16:
-            #Mystery stuff goes here
-            print("Mystery genre")
-            return 'Mystery'
+        elif userChoice == "17":
+            genreSelected = True
+            choice = "Romance"
+            print("Romance genre selected")
 
-        elif option == 17:
-            #Romance stuff goes here
-            print("Romance genre") 
-            return 'Romance'
+        elif userChoice == "18":
+            genreSelected = True
+            choice = "Sci-fi"
+            print("Sci-Fi genre selected")  
 
-        elif option == 18:
-            #Sci-fi stuff goes here
-            print("Sci-fi genre")
-            return 'Sci-fi'
+        elif userChoice == "19":
+            genreSelected = True
+            choice = "Sport"
+            print("Sport genre selected")   
 
-        elif option == 19:
-            #Sport stuff goes here
-            print("Sport genre")
-            return 'Sport'
+        elif userChoice == "20":
+            genreSelected = True
+            choice = "Thriller"
+            print("Thriller genre selected")
 
-        elif option == 20:
-            #Thriller stuff goes here
-            print("Thriller genre") 
-            return 'Thriller'
+        elif userChoice == "21":
+            genreSelected = True
+            choice = "War"
+            print("War genre selected")   
 
-        elif option == 21:
-            #War stuff goes here
-            print("War genre")
-            return 'War'
+        elif userChoice == "22":
+            genreSelected = True
+            choice = "Western"
+            print("Western genre selected") 
+                
 
-        elif option == 22:
-            #Western stuff goes here
-            print("Western genre")
-            return 'Western'
-
-             
         else:
-            print("Invalid option")    
-
-            return 'null'
-
-
+            print("Invalid input, use numbers 1 - 22")  
+    
+    return choice 
 
 def createGraph(year, genre, awards):
-    splitArray=[]
+    print("test 1") 
 
-
-    chosenGenre = genreMenu()
+    genreYear = []
+    findGenre = []
+    genreList = []
+    getAwards = []
+    genreFound = False
+    awardSplit = []
+    awardSplitter = []
+    getAwardNum = []
     
-    #print("yeet 1")
-    #for j in range (len(genre)): # validates to ensure genre = chosen genre by user
-   
-    #j = 0
-    #with open('movies_initial.csv') as topo_file:
-        #values = []
-        #for line in topo_file:
-            
-    #with open('movies_initial.csv', 'r') as f:
-       # csv_reader = csv.reader(f)
-       # header_row = next(csv_reader)
-       # for i in range(len(header_row)):
-       #     print (i, ':', header_row[i])
-        #    C = [dfdsfsdf]
-            
-    data = pd.read_csv("movies_initial.csv")
-    D = data["genre"]
-    substring = chosenGenre
-    if substring in D:
-        E = data["awards"]  
-        if len(E) != 0:
-            C = data["year"]    
-            print(C,D,E)
-        
+    chosenGenre = genreMenu(year, genre, awards)
+    for j in range(len(genre)):
+        #print(genre[j])
+        genreList = str(genre[j]).split(", ")
+        #print()
+        #print("test")
+        for y in range(len(genreList)):
+            #print(chosenGenre, genreList[k])
+            if str(chosenGenre) == str(genreList[y]):
+                #print("test2")
+                awardSplit = str(awards).split("\t")
+                #print(awardSplit)
+                for i in range(len(awardSplit)):
+                    #print(awardSplit[i])
+                    if "win." in (awardSplit[i]):
+                        awardSplitter = awardSplit[i].split(" win.")
+                        #print(awardSplitter)
+                        getAwardNum.append(awardSplitter[0])
+                        getAwards.append(year[j])
+                    else:
+                        getAwardNum.append("0")
     
 
-           
-        
+    print(getAwards, getAwardNum)
+    #print(genre)
+    
+    
+   # while (genreFound == False):
+  #      for i in range (len(genre)):
+ #           genreList = str(genre[i]).split(", ")
+#
+       #     for j in range(len(genreList)):
+      #          if genreList[j] == str(chosenGenre):
+     #               genreFound == True
+    #                print(genreFound)
+
          
-        
-
-       
-       
-    #plt.title(chosenGenre)
-    #plt.xlim(1850, 2020)
-    #plt.ylim(0, 10)
-    #plt.xlabel('year')
-    #plt.ylabel('awards')            
-
-#if awards array contains "win" gonna split the string into an array and take postion 0
+            #print("test 2")
+            #print(genreList[1])
+        #
+            #print("put it in daddy")
+            #substring = chosenGenre
+           # print(chosenGenre)
+           # print(genreList[j])
+            #print(genreList[j])
+           # if substring in genreList[j]:
+            #    print("here")
+            #    print(genreFound)
+            #    if len(genreYear) !=0:
+             #       if year[i] in genreYear:
+             #           for k in range(50):
+             #               if "\k wins" in awards:
+              #                  getAwards.append(k)
+              #      else:
+              #         genreYear.append(year[i])
+             #           getAwards.append(awards[i])
+             #   else: 
+              #      genreYear.append(year[i])
+            #        findGenre.append(int(1))
+          #  else:
+           #     print("kill me")        
+    print("The years this genre has had movies made:")
+    getAwards.sort()
     
-    #plt.show()
+    #print(genreYear, "and" , findGenre) 
+    #print(getAwards, "\n")
+    print("Loading grapgh...")
+    fig, ax = plt.subplots()
+    #ax.plot(getAwardNum, 'go--', label="Movies") 
+    fig.suptitle("Awards per Genre", fontsize=18)
+    ax.set_title("Genre: "+ chosenGenre, fontsize=14)
+    ax.set_xlabel("Years", fontsize=12)
+    ax.set_ylabel("Amount of movies", fontsize=12, color='g')
+    ax.plot(getAwards, 'ro--', label="Awards") 
+    ax.set_yticks(range(1, 11, 1))
+    rangeYear = int(max(getAwards))-int(min(getAwards))
+    plt.xlim(getAwards, getAwardNum)
+    ax.legend()
+    ax.grid(True)
+    ax.grid(False)
+    plt.show()
+
