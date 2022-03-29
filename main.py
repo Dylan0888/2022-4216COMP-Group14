@@ -2,6 +2,7 @@
 import csv
 from array import *
 import pandas as pd
+from tkinter import *
 
 # Import files of Everyone 
 import moviesCountries as mc  # Mackenzie's File
@@ -81,27 +82,30 @@ def filterCategory(category, option):
                 category[i] = newCategory[0]
     return category
 
-def removeEmptyData (imdbRating):
-    filteredimdb = []
-    removeCounter = 0
-    for i in range(len(imdbRating)):
-        if str(imdbRating[i]) == "":
-           # filteredRelease.append(released[i])
-            #removeCounter = removeCounter + 1 
-            print("removed empty value")
-        else:
-            filteredimdb.remove(imdbRating[i])
-            removeCounter = removeCounter + 1
-    print(removeCounter)
-
-
-
 
 # Main Code
-removeEmptyData(loadCategory("released"))
 loadFile() # Loads file when program is started
 
 while(menuFlag== False):
+    
+    window = Tk()
+
+    lbl = Label(window, text="Movie Menu", fg='black', font=("Impact", 16))
+    lbl.place(x= 250, y=50)
+
+    b1 = Button(window, text="1. Movies per Country", fg = 'midnightblue')
+    b1.place(x=80, y=100)
+
+    window.configure
+    window.title('Movie Data Menu')
+    window.geometry("600x400+20+40")
+    window.mainloop()
+    
+    
+    
+    
+    
+    
     print("""
     -----------( Main Menu )-----------
     \t  -+- Menu Options: -+-
