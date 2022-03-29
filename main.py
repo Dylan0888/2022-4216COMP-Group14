@@ -81,9 +81,24 @@ def filterCategory(category, option):
                 category[i] = newCategory[0]
     return category
 
+def removeEmptyData (imdbRating):
+    filteredimdb = []
+    removeCounter = 0
+    for i in range(len(imdbRating)):
+        if str(imdbRating[i]) == "":
+           # filteredRelease.append(released[i])
+            #removeCounter = removeCounter + 1 
+            print("removed empty value")
+        else:
+            filteredimdb.remove(imdbRating[i])
+            removeCounter = removeCounter + 1
+    print(removeCounter)
+
+
+
 
 # Main Code
-
+removeEmptyData(loadCategory("released"))
 loadFile() # Loads file when program is started
 
 while(menuFlag== False):
