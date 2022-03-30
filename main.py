@@ -6,7 +6,7 @@ from tkinter import *
 
 # Import files of Everyone 
 import moviesCountries as mc  # Mackenzie's File
-import countryYear as cy # reeces pieces file
+import countryYear as cvc # reeces pieces file
 import Actors_Movies as am # Dylans file
 
 # Global Variables
@@ -93,7 +93,7 @@ while(menuFlag== False):
     \t  -+- Menu Options: -+-
     \t 1. Graph 1 - Movies Per Country
     \t 2. Graph 2 - Actors an Movies Per Year
-    \t 3. Graph 3 - Countries vs Countries
+    \t 3. Graph 3 - Countries vs Countires
     \t 4. Graph 4 - Something 
     \t 5. Quit
     -----------------------------------
@@ -115,7 +115,7 @@ while(menuFlag== False):
     elif(userOption == "3"):
          # Reece Function 
         print("Running Option 3")
-        cy.menuOption(loadCategory("year"), loadCategory("country"))
+        cvc.menuOption(loadCategory("year"), loadCategory("country"))
         menuFlag = True
     elif(userOption == "4"):
         # Bradley Function
