@@ -6,7 +6,7 @@ from tkinter import *
 
 # Import files of Everyone 
 import moviesCountries as mc  # Mackenzie's File
-import Genre_Awards as ga # reeces pieces file
+import countryYear as cy # reeces pieces file
 import Actors_Movies as am # Dylans file
 
 # Global Variables
@@ -115,7 +115,7 @@ while(menuFlag== False):
     elif(userOption == "3"):
          # Reece Function 
         print("Running Option 3")
-        ga.createGraph(loadCategory("year"), loadCategory("genre"), loadCategory("awards"))
+        cy.menuOption(loadCategory("year"), loadCategory("country"))
         menuFlag = True
     elif(userOption == "4"):
         # Bradley Function
