@@ -82,7 +82,7 @@ def yearMenu(year, country):
         if datesInvalid == False:
             cvcGraph(year, country, dateOne, dateTwo)
 
-##IS LOADING MENU OPTION AFTER SELECTING YEARS
+##IS LOADING MENU OPTION AFTER SELECTING YEARs
 
 
 def cvcGraph(year, country, dateOne, dateTwo):
