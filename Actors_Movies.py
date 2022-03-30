@@ -68,10 +68,10 @@ def singGraph(year, cast, imdbRating):
             print("Actor Found")   
                    
     # ------ Prints none graphed data out for the user ----- #
-    print ("The actor was found in the following: \n ")
+    #print ("The actor was found in the following: \n ")
     appereanceYear.sort()
-    print (appereanceYear, " and ",actorAppearances)
-    print (getImdb, "\n")
+    #print (appereanceYear, " and ",actorAppearances)
+    #print (getImdb, "\n")
     print("Loading graph...")
 
     # ---- Graph Design ---- #
