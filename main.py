@@ -93,7 +93,7 @@ while(menuFlag== False):
     \t  -+- Menu Options: -+-
     \t 1. Graph 1 - Movies Per Country
     \t 2. Graph 2 - Actors an Movies Per Year
-    \t 3. Graph 3 - Genre Awards
+    \t 3. Graph 3 - Countries vs Countries
     \t 4. Graph 4 - Something 
     \t 5. Quit
     -----------------------------------
