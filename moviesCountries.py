@@ -29,12 +29,11 @@ import csv
 from array import *
 import pandas as pd
 
+
 # Global Variables
 
 # Temp for testing
-movieTitle = ["Spiderman", "Batman", "Harry Potter"]
-movieCountry = ["USA", "UK", "Spain"]
-year = ["", "", ""]
+
 #imageFile = "Resources\\WorldMap.png"
 imageFile = "Resources\\world-map.jpg"
 coordsFile = "Resources\\countryCoords.csv"
@@ -42,6 +41,54 @@ coordsArray = []
 dataArray= []
 
 # Functions
+
+def mainOptions(movieTitle, country, year):
+    yearOne = 0
+    yearTwo = 0
+    menuFlag = False
+    yearsValid = False
+
+
+    while(menuFlag== False):
+        print("""
+        -------( Movie Countries Options )-------
+        \t  -+- Menu Options: -+-
+        \t 1. Show All Movies / Country
+        \t 2. Movies / Country between two Years
+        \t 3. Return to Main Menu
+        -----------------------------------------
+        """)
+
+        userOption = input("Pick an Option: ") # Asks User to pick a menu Option
+
+        if(userOption == "1"):
+            # Movies Per Country with set dates
+            createGraphMulti(movieTitle, country, year, 1874, 2016)
+            menuFlag = True
+        elif(userOption == "2"):
+            # Movies Per Country between Dates
+
+            while(yearsValid== False):
+                yearOne = int(input("Choose the First Year to show Movies Between: "))
+                yearTwo = int(input("Choose the Second Year to show Movies Between: "))
+
+                if yearTwo < yearOne:
+                    print("[ERROR] The Years Must be Input in Chronological Order!")
+                    yearsValid = False
+                if (yearOne >= 1874) and (yearTwo <= 2016):
+                    yearsValid = True
+                    break
+                else:
+                    yearsValid = False
+                    print("[ERROR] The Years Must be between 1874 and 2016!")
+
+            if yearsValid == True:
+                createGraphMulti(movieTitle, country, year, yearOne, yearTwo)
+            menuFlag = True
+        elif(userOption == "3"):
+            # Return to Main Menu
+            menuFlag = True
+
 
 def createGraph(movieTitle, country):
     loadMapCoordinates()
@@ -62,8 +109,35 @@ def createGraph(movieTitle, country):
                 #print("Adding 1 to country" + country[i])
                 coordsArray[j] = splitArray[0] + "," + splitArray[1] + "," + splitArray[2] + "," + str(amtCounter)
     #Once Finished, a Graph will be Plotted...
-    plotOnMap()
+    plotOnMap(1874, 2016)
 
+
+def createGraphMulti(movieTitle, country, year, yearOne, yearTwo):
+    loadMapCoordinates()
+
+    print("[DATA] Loading all Countries onto Map...")
+    # Temp Variables 
+    countryMatch = False
+    matchCounter = 0
+    tempArray = []
+    for i in range (len(movieTitle)):
+        #print(i, ": ", movieTitle[i], " - ", country[i])
+        for j in range (len(coordsArray)):
+            countryMatch = False
+            splitArray = coordsArray[j].split(",")
+         #   print("Testing Match: " + splitArray[0] + " and " + country[i])
+            if splitArray[0] == country[i]:
+
+                # add some checks for year
+                if year[i].isnumeric():
+                    if (int(year[i]) > yearOne) and (int(year[i]) < yearTwo):
+
+                        amtCounter = int(splitArray[3]) + 1
+                        #print("Adding 1 to country" + country[i])
+                        coordsArray[j] = splitArray[0] + "," + splitArray[1] + "," + splitArray[2] + "," + str(amtCounter)
+    #Once Finished, a Graph will be Plotted...
+    plotOnMap(yearOne, yearTwo)
+    print("[DATA] Map Successfully Created!")
 
 def loadMapCoordinates():
     # Function reads in the coordinates from the coordinates file (found in the resources folder)
@@ -75,7 +149,7 @@ def loadMapCoordinates():
     with open(coordsFile, newline='') as movieFile:
         spamreader = csv.reader(movieFile, delimiter= ',')
         for row in spamreader:
-            print("[FILE] Reading row Number ", row)
+            #print("[FILE] Reading row Number ", row)
             rowToAdd = row[3] + ","+ row[2] + "," + row[1] + "," + "0"
             coordsArray.append(rowToAdd) # row with default amount 0
 
@@ -95,11 +169,11 @@ def loadMapCoordinates():
     print("[FILE] Successfully Loaded all File Coordinates! (",rowCounter, " Entries )")
 
 
-def plotOnMap():
+def plotOnMap(yearOne, yearTwo):
 
     # Plot Options
     data = image.imread(imageFile)
-    plt.title("Movies per Country")
+    plt.title("Movies per Country (" + str(yearOne) + "-" + str(yearTwo) + ")")
    # plt.xlim(0, 1200)
    # plt.ylim(645, 0)
     plt.xlim(-180, 180) # coordinates changed to longitude latitude
@@ -123,20 +197,19 @@ def plotOnMap():
             [3] = amount of films
         """
         addPoint(float(splitArray[1]),float(splitArray[2]), colourFormula(int(splitArray[3])), sizeFormula(splitArray[3])) # plots the point on the graph (see addPoint function)
-        print("[PLOT] Plotted Country data for " + splitArray[0] + "!")
 
     print("[PLOT] Finished Plotting Data, Displaying Map...")
 #    plt.plot(-95.712891,37.09024, 'bo-', color='blue', ms=50, alpha=0.5) #test plot
-    plt.plot(0,0, 'bo-', color='midnightblue', ms=20, alpha=0.5, label="Dark Blue: 5000+")
-    plt.plot(0,0, 'bo-', color='blue', ms=20, alpha=0.5, label="Blue: 1000-5000")
-    plt.plot(0,0, 'bo-', color='mediumpurple', ms=20, alpha=0.5, label="Purple: 500-1000")
-    plt.plot(0,0, 'bo-', color='darkviolet', ms=20, alpha=0.5, label="Dark Violet: 400-500")
-    plt.plot(0,0, 'bo-', color='violet', ms=20, alpha=0.5, label="Violet: 300-400")
-    plt.plot(0,0, 'bo-', color='magenta', ms=20, alpha=0.5, label="Magenta: 200-300")
-    plt.plot(0,0, 'bo-', color='crimson', ms=20, alpha=0.5, label="Crimson: 1-200")
+    plt.plot(0,200, 'bo-', color='midnightblue', ms=20, alpha=0.5, label="Dark Blue: 5000+")
+    plt.plot(0,200, 'bo-', color='blue', ms=20, alpha=0.5, label="Blue: 1000-5000")
+    plt.plot(0,200, 'bo-', color='mediumpurple', ms=20, alpha=0.5, label="Purple: 500-1000")
+    plt.plot(0,200, 'bo-', color='darkviolet', ms=20, alpha=0.5, label="Dark Violet: 400-500")
+    plt.plot(0,200, 'bo-', color='violet', ms=20, alpha=0.5, label="Violet: 300-400")
+    plt.plot(0,200, 'bo-', color='magenta', ms=20, alpha=0.5, label="Magenta: 200-300")
+    plt.plot(0,200, 'bo-', color='crimson', ms=20, alpha=0.5, label="Crimson: 1-200")
     plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), fancybox=True, shadow=True, ncol=5)
     plt.show()
-    cid = plt.canvas.mpl_connect('button_press_event', onclick)
+#    cid = plt.canvas.mpl_connect('button_press_event', onclick)
 
     def onclick(event):
         print('%s click: button=%d, x=%d, y=%d, xdata=%f, ydata=%f' %

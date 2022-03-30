@@ -2,10 +2,11 @@
 import csv
 from array import *
 import pandas as pd
+from tkinter import *
 
 # Import files of Everyone 
 import moviesCountries as mc  # Mackenzie's File
-import Genre_Awards as ga # reeces pieces file
+import countryYear as cvc # reeces pieces file
 import Actors_Movies as am # Dylans file
 
 # Global Variables
@@ -56,17 +57,43 @@ def loadCategory(chosenCategory):
         print("[ERROR] Specified Category is not a Valid Option!")
         return -1
 
-# Main Code
+def filterCategory(category, option):
+    newCategory = []
+# Options:
+# betweenYears - remove ¿½ character and replace with -
+# oneYear - if multiple years shown, only show first
+# 
+# 
+# 
+# 
 
+    if option == "betweenYears":
+        for i in range(len(category)):
+            # remove ¿½ character and replace with -
+            if "¿½" in category[i]:
+                # takes only the first option 
+                category[i].replace("¿½", "-")
+    elif option == "oneYear":
+        for i in range(len(category)):
+            # remove ¿½ character and replace with -
+            if "¿½" in category[i]:
+                # takes only the first option 
+                newCategory = category[i].split("¿½")
+                category[i] = newCategory[0]
+    return category
+
+
+# Main Code
 loadFile() # Loads file when program is started
 
 while(menuFlag== False):
+        
     print("""
     -----------( Main Menu )-----------
     \t  -+- Menu Options: -+-
     \t 1. Graph 1 - Movies Per Country
     \t 2. Graph 2 - Actors an Movies Per Year
-    \t 3. Graph 3 - Genre Awards
+    \t 3. Graph 3 - Countries vs Countires
     \t 4. Graph 4 - Something 
     \t 5. Quit
     -----------------------------------
@@ -77,7 +104,8 @@ while(menuFlag== False):
     if(userOption == "1"):
         # Mackenzie Function
         print("Running Option 1")
-        mc.createGraph(loadCategory("title"), loadCategory("country"))
+        #mc.createGraph(loadCategory("title"), loadCategory("country"))
+        mc.mainOptions(loadCategory("title"), loadCategory("country"), filterCategory(loadCategory("year"), "oneYear"))
         menuFlag = True
     elif(userOption == "2"):
         # Dylan Function
@@ -87,7 +115,7 @@ while(menuFlag== False):
     elif(userOption == "3"):
          # Reece Function 
         print("Running Option 3")
-        ga.createGraph(loadCategory("year"), loadCategory("genre"), loadCategory("awards"))
+        cvc.menuOption(loadCategory("year"), loadCategory("country"))
         menuFlag = True
     elif(userOption == "4"):
         # Bradley Function
