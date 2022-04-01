@@ -145,7 +145,7 @@ def multiGraph(year, cast):
             a2 = input("Please enter your second actors full name: ")
             if (a1 == a2):
                 new_a2=input("Both Actors are the same, Please enter another:")
-            a2 = new_a2
+                a2 = new_a2
             for i in range(len(cast)):
                 a2ActorList = str(cast[i]).split(", ")
                 for j in range(len(a2ActorList)):                
