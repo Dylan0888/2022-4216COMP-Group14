@@ -140,8 +140,12 @@ def multiGraph(year, cast):
                     
     # ---- Users Enters second actor and scans through database ---- # 
     a2Found = False 
+    a2 = ""
     while (a2Found != True):
             a2 = input("Please enter your second actors full name: ")
+            if (a1 == a2):
+                new_a2=input("Both Actors are the same, Please enter another:")
+            a2 = new_a2
             for i in range(len(cast)):
                 a2ActorList = str(cast[i]).split(", ")
                 for j in range(len(a2ActorList)):                
@@ -167,7 +171,6 @@ def multiGraph(year, cast):
             elif a2Found == True:
                 print("Actor two Found")  
                  
-
 
     print("Loading multiple graphs....")
 
