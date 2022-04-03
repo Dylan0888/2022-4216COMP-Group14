@@ -130,7 +130,7 @@ def createGraphMulti(movieTitle, country, year, yearOne, yearTwo):
 
                 # add some checks for year
                 if year[i].isnumeric():
-                    if (int(year[i]) > yearOne) and (int(year[i]) < yearTwo):
+                    if (int(year[i]) >= yearOne) and (int(year[i]) <= yearTwo):
 
                         amtCounter = int(splitArray[3]) + 1
                         #print("Adding 1 to country" + country[i])
