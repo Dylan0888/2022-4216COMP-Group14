@@ -125,11 +125,10 @@ def createGraphMulti(movieTitle, country, year, yearOne, yearTwo):
         for j in range (len(coordsArray)):
             countryMatch = False
             splitArray = coordsArray[j].split(",")
-         #   print("Testing Match: " + splitArray[0] + " and " + country[i])
-            if splitArray[0] == country[i]:
-
+            #print(year)
+            if (True):
+                if splitArray[0] == country[i]:
                 # add some checks for year
-                if year[i].isnumeric():
                     if (int(year[i]) >= yearOne) and (int(year[i]) <= yearTwo):
 
                         amtCounter = int(splitArray[3]) + 1
@@ -180,7 +179,7 @@ def plotOnMap(yearOne, yearTwo):
     plt.ylim(-90, 90)
     plt.imshow(data, extent=(-180, 180, -90, 90))
     plt.annotate("Hello World", xy=(5, 500), xytext=(6, 550))
-    plt.grid(b=None)
+    plt.grid(False)
     splitArray = []
 
     # add Data Points
