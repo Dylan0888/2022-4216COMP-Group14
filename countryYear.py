@@ -1,3 +1,4 @@
+from unicodedata import numeric
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -8,13 +9,12 @@ def menuOption(year, country):
     choiceInput = False
     countryList = []
     datesInvalid = True
-    
 
     while (choiceSelected == False):
         userChoice = input("""
          ------- Menu options -----------
         [1] Country vs Country
-        [2] All Countries
+        [2] All Countries, All Time
         [3] Exit
         
         --Please select a option--
@@ -59,19 +59,88 @@ def menuOption(year, country):
                                 datesInvalid = False
                             else: 
                                 print("dates must be between 1874 and 2019, please try again")   
+                                datesInvalid = True
                         if datesInvalid == False:
-                            createGraphOne(year, country, dateOne, dateTwo)
+                            print("Loading graph, please wait")
+                            createGraphOne(year, country, dateOne, dateTwo, countryOne, countryTwo)
 
                     elif(choiceTwo == "2"):
-                        print("havent done this yet")                 
+                        print("Loading graph, please wait")  
+                        createGraphTwo(year, country, countryOne, countryTwo)
+
         elif userChoice == "2":
             choiceSelected = True
-            print("All Countries selected")
+            print("Loading graph, please wait")
+            createGraphThree(year, country)
+
+        elif userChoice == "3":
+            choiceSelected = True
+            print("Exit selcted, returning to main menu")
+            print("havent done this yet")
   
-def createGraphOne(year, country, dateOne, dateTwo):
-    print("havent done this yet")
+def createGraphOne(year, country, dateOne, dateTwo, countryOne, countryTwo):
+    countCountryOne = 0  
+    countCountryTwo = 0
+
+    for i in range(len(country)): 
+        countryList = str(country[i]).split(", ")
+        if year[i].isnumeric():
+            if (int(year[i]) > dateOne) and (int(year[i]) < dateTwo):
+                for j in range(len(countryList)):
+                    if countryOne == str(countryList[j]) :
+                        countCountryOne+=1
+                    if countryTwo == str(countryList[j]) :
+                        countCountryTwo+=1
+    
+
+    labels = countryOne, countryTwo
+    sizes = countCountryOne, countCountryTwo
+    explode = (0.1,0)
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode = explode, labels = labels, autopct = '%1.1f%%', shadow = True, startangle = 90)
+    ax1.set_title(countryOne+  " vs " + countryTwo, fontsize=14)
+    ax1.set_xlabel("Date: " + str(dateOne) + "-" + str(dateTwo), fontsize=12)
+    plt.legend(sizes)
+    plt.show()
+    
+def createGraphTwo(year, country, countryOne, countryTwo):
+    countCountryOne = 0  
+    countCountryTwo = 0
+
+    for i in range(len(country)): 
+        countryList = str(country[i]).split(", ")
+        if year[i].isnumeric():
+            if (int(year[i]) > 1874) and (int(year[i]) < 2019):
+                for j in range(len(countryList)):
+                    if countryOne == str(countryList[j]) :
+                        countCountryOne+=1
+                    if countryTwo == str(countryList[j]) :
+                        countCountryTwo+=1
+    
+    labels = countryOne, countryTwo
+    sizes = countCountryOne, countCountryTwo
+    explode = (0.1,0)
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode = explode, labels = labels, autopct = '%1.1f%%', shadow = True, startangle = 90)
+    ax1.set_title(countryOne+  " vs " + countryTwo, fontsize=14)
+    ax1.set_xlabel("Date: 1874 - 2019", fontsize=12)
+    plt.legend(sizes)
+    plt.show()
+
+def createGraphThree(year, country):
+    
+    labels = countryList
+    sizes = df
+    explode = (0.1,0)
+    fig1, ax1 = plt.subplots()
+    ax1.pie(sizes, explode = None, labels = labels, autopct = '%1.1f%%', shadow = True, startangle = 90)
+    ax1.set_title("All countries, All time", fontsize=14)
+    ax1.set_xlabel("Date: 1874 - 2019", fontsize=12)
+    plt.legend(sizes)
+    plt.show()
 
 
+   
 
 
     
