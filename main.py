@@ -114,9 +114,6 @@ def loadMultiCategory(catOne, catTwo, catThree, useCatThree):
         rawDataOne = data[catOne]
         rawDataTwo = data[catTwo]
         rawDataThree = data[catThree]
-        print(len(rawDataOne))
-        print(len(rawDataTwo))
-        print(len(rawDataThree))
         for i in range(len(rawDataOne)):
             #print(rawDataOne[i])
             try:
