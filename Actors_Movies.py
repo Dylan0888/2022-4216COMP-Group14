@@ -15,6 +15,7 @@ def menuOptions(year, cast, imdbRating):
             ------ Options ------
         \t 1. Single Actor
         \t 2. Multiple Actors 
+        \t 3. Exit 
             ---------------------
             """)
             
@@ -25,6 +26,9 @@ def menuOptions(year, cast, imdbRating):
         elif userChoice == "2":
             userSelection = True
             multiGraph (year, cast)
+        
+        elif userChoice =="3":
+            return 
         
         else:
             print("Please select a valid input!")
@@ -41,6 +45,16 @@ def singGraph(year, cast, imdbRating):
 
     # ensures the user entered an actor that is in the data base 
     while (actorFound != True):
+        print("""
+    
+        Some popular examples are: 
+
+        \t Charles Chaplin       Buster Keaton
+
+        \t John Gilbert          Emil Jannings
+        
+        """)
+
         chosenActor = input("Please enter your actors full name: ")
         for i in range(len(cast)):
             actorList = str(cast[i]).split(", ")
@@ -112,6 +126,15 @@ def multiGraph(year, cast):
     # ---- Loops to find the first actor in the data ---- # 
     a1Found = False
     while (a1Found != True):
+        print("""
+    
+        Some popular examples are: 
+
+        \t Charles Chaplin       Buster Keaton
+        
+        \t John Gilbert          Emil Jannings
+        
+        """)
         a1 = input("Please enter your first actors full name: ")
         for i in range(len(cast)):
             a1ActorList = str(cast[i]).split(", ")
